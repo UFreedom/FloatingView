@@ -3,7 +3,11 @@ package com.ufreedom.demo;
 import android.graphics.Color;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
+import android.view.Gravity;
 import android.view.View;
+import android.view.ViewGroup;
+import android.widget.ImageView;
+import android.widget.LinearLayout;
 import android.widget.TextView;
 
 import com.ufreedom.floatingview.Floating;
@@ -44,6 +48,23 @@ public class MainActivity extends AppCompatActivity {
         curveView.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
+                LinearLayout linearLayout = new LinearLayout(MainActivity.this);
+                linearLayout.setOrientation(LinearLayout.HORIZONTAL);
+                ImageView imageView = new ImageView(MainActivity.this);
+                imageView.setImageDrawable(getResources().getDrawable(R.mipmap.ic_launcher));
+                linearLayout.addView(imageView);
+
+                TextView textView = new TextView(MainActivity.this);
+                textView.setBackgroundColor(Color.RED);
+                textView.setText("UFreedom");
+                LinearLayout.LayoutParams layoutParams = new LinearLayout.LayoutParams(ViewGroup.LayoutParams.WRAP_CONTENT, ViewGroup.LayoutParams.WRAP_CONTENT);
+                layoutParams.gravity = Gravity.CENTER_VERTICAL;
+                linearLayout.addView(textView,layoutParams);
+
+                FloatingElement builder = new FloatingBuilder().anchorView(view)
+                        .target(linearLayout).floatingTransition(new TranslateFloatingTransition()).build();
+                floatingView.startFloating(builder);
+
             }
         });
 
