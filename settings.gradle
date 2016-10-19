@@ -1,1 +1,1 @@
-include ':demo'
+include ':demo', ':FloatingViewLib'
