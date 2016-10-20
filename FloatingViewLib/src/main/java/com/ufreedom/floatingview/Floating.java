@@ -39,8 +39,10 @@ public class Floating {
             mFloatingDecorView.setId(R.id.floating_decor);
             rootView.addView(mFloatingDecorView);
         }
-
-        mSpringSystem = SpringSystem.create();
+        
+        if (mSpringSystem == null){
+            mSpringSystem = SpringSystem.create();
+        }
 
     }
     
