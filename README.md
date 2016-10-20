@@ -1,5 +1,20 @@
 # FloatingView
-FloatingView can floating some view above anothor view with animation
+
+<p align="center">
+  <a href="https://dribbble.com/shots/2583144-Aviate-Badge" target="_blank"><img src="https://github.com/UFreedom/FloatingView/tree/master/images/floating_anim.gif">
+  </a>
+ </p>
+
+<h3 align="center">FloatingView</h3>
+
+<p align="center">
+  FloatingView can make the target view  floating above the anchor view with cool animation
+</p>
+
+<p align="center">
+<a target="_blank" href="https://github.com/UFreedom/FloatingView"><img src="https://img.shields.io/badge/andorid-4.0-green.svg" alt="npm"></a>
+<a target="_blank" href='https://github.com/UFreedom/FloatingView/blob/master/LICENSE.txt'><img src='https://img.shields.io/crates/l/rustc-serialize.svg'  /></a>
+</p>
 
 
 License ![License](https://img.shields.io/hexpm/l/plug.svg)
