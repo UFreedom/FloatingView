@@ -1,7 +1,7 @@
 # FloatingView
 
 <p align="center">
-  <a href="https://dribbble.com/shots/2583144-Aviate-Badge" target="_blank"><img src="https://github.com/UFreedom/FloatingView/tree/master/images/floating_anim.gif">
+  <a href="https://dribbble.com/shots/2583144-Aviate-Badge" target="_blank"><img src="https://github.com/UFreedom/FloatingView/blob/master/images/floating_anim.gif">
   </a>
  </p>
 
