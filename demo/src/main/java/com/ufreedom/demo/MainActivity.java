@@ -13,6 +13,7 @@ import android.widget.TextView;
 import com.ufreedom.floatingview.Floating;
 import com.ufreedom.floatingview.FloatingBuilder;
 import com.ufreedom.floatingview.FloatingElement;
+import com.ufreedom.floatingview.effect.CurveFloatingPathTransition;
 import com.ufreedom.floatingview.effect.TranslateFloatingTransition;
 
 public class MainActivity extends AppCompatActivity {
@@ -62,7 +63,7 @@ public class MainActivity extends AppCompatActivity {
                 linearLayout.addView(textView,layoutParams);
 
                 FloatingElement builder = new FloatingBuilder().anchorView(view)
-                        .target(linearLayout).floatingTransition(new TranslateFloatingTransition()).build();
+                        .target(linearLayout).floatingTransition(new CurveFloatingPathTransition()).build();
                 floatingView.startFloating(builder);
 
             }

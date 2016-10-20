@@ -5,7 +5,7 @@ package com.ufreedom.floatingview.transition;
  * Date : 2016 十月 19
  */
 
-public abstract  class BaseFloatingPathTransition extends ReboundFloatingTransition implements FloatingPathTransition {
+public abstract  class BaseFloatingPathTransition  implements FloatingPathTransition {
 
     private PathPosition pathPosition;
     private float [] pathPositionGetter;
@@ -24,6 +24,9 @@ public abstract  class BaseFloatingPathTransition extends ReboundFloatingTransit
     public PathPosition getFloatingPosition(float progress) {
         if (pathPosition == null){
             pathPosition = new PathPosition();
+        }
+        if (pathPositionGetter == null){
+            pathPositionGetter = new float[2];
         }
         if (getFloatingPath() != null){
             getFloatingPath() .getPathMeasure().getPosTan(progress, pathPositionGetter, null);

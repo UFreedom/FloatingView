@@ -2,24 +2,35 @@ package com.ufreedom.floatingview;
 
 import android.view.View;
 
+import com.facebook.rebound.Spring;
+import com.facebook.rebound.SpringConfig;
+import com.facebook.rebound.SpringSystem;
+import com.facebook.rebound.SpringUtil;
+
 /**
  * Author UFreedom
  * Date : 2016 十月 19
  */
 
-public class YumFloating implements IFloating {
+public class YumFloating implements IFloating, Rebound {
 
+    private SpringSystem springSystem;
     private View targetView;
+    
+    public YumFloating(View targetView, SpringSystem springSystem) {
+        this.targetView = targetView;
+        this.springSystem = springSystem;
+    }
 
+
+    public YumFloating(View targetView) {
+        this.targetView = targetView;
+    }
 
     public View getTargetView() {
         return targetView;
     }
 
-    public YumFloating(View targetView) {
-        this.targetView = targetView;
-    }
-    
     @Override
     public void setAlpha(float alpha) {
         targetView.setAlpha(alpha);
@@ -79,4 +90,24 @@ public class YumFloating implements IFloating {
     public void setY(float y) {
         targetView.setY(y);
     }
+
+
+    @Override
+    public Spring createSpringByBouncinessAndSpeed(double bounciness, double speed) {
+        return springSystem.createSpring()
+                .setSpringConfig(SpringConfig.fromBouncinessAndSpeed(bounciness, speed));
+    }
+
+    @Override
+    public Spring createSpringByTensionAndFriction(double tension, double friction) {
+        return springSystem.createSpring()
+                .setSpringConfig(SpringConfig.fromOrigamiTensionAndFriction(tension, friction));
+    }
+
+    @Override
+    public float transition(double progress, float startValue, float endValue) {
+        return (float) SpringUtil.mapValueFromRangeToRange(progress, 0, 1, startValue, endValue);
+    }
+    
+    
 }

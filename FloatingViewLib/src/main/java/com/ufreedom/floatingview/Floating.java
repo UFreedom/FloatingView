@@ -9,6 +9,7 @@ import android.view.ViewGroup;
 import android.view.Window;
 import android.widget.FrameLayout;
 
+import com.facebook.rebound.SpringSystem;
 import com.ufreedom.floatingview.transition.FloatingTransition;
 
 
@@ -18,31 +19,33 @@ import com.ufreedom.floatingview.transition.FloatingTransition;
  */
 
 public class Floating {
-    
 
-    private Activity mActivity;
+
     private FloatingDecorView mFloatingDecorView;
+    private SpringSystem mSpringSystem;
     
     public Floating(Activity activity){
-        mActivity = activity;
 
-        if (mActivity == null){
+        if (activity == null){
             throw new NullPointerException("Activity should not be null");
         }
         
-        ViewGroup rootView = (ViewGroup) mActivity.findViewById(Window.ID_ANDROID_CONTENT);
+        ViewGroup rootView = (ViewGroup) activity.findViewById(Window.ID_ANDROID_CONTENT);
         View decorView = rootView.findViewById(R.id.floating_decor);
         if (decorView instanceof  FloatingDecorView){
             mFloatingDecorView = (FloatingDecorView) decorView;
         }else {
-            mFloatingDecorView = new FloatingDecorView(mActivity);
+            mFloatingDecorView = new FloatingDecorView(activity);
             mFloatingDecorView.setId(R.id.floating_decor);
             rootView.addView(mFloatingDecorView);
         }
+
+        mSpringSystem = SpringSystem.create();
+
     }
     
 
-    public void detach() {
+    /*public void detach() {
         
         if (mFloatingDecorView == null) return;
         
@@ -51,21 +54,19 @@ public class Floating {
         rootView.removeView(mFloatingDecorView);
         mFloatingDecorView = null;
         mActivity = null;
-    }
+    }*/
 
     public void startFloating(FloatingElement floatingElement) {
         
         View anchorView = floatingElement.anchorView;
         View targetView = floatingElement.targetView;
-
-
+        
         Rect rect = new Rect();
         anchorView.getGlobalVisibleRect(rect);
         int[] location = new int[2];
         mFloatingDecorView.getLocationOnScreen(location);
         rect.offset(-location[0], -location[1]);
-
-
+        
         int widthMeasureSpec = View.MeasureSpec.makeMeasureSpec((1 << 30) - 1, View.MeasureSpec.AT_MOST);
         int heightMeasureSpec = View.MeasureSpec.makeMeasureSpec((1 << 30) - 1, View.MeasureSpec.AT_MOST);
         targetView.measure(widthMeasureSpec,heightMeasureSpec);
@@ -79,7 +80,7 @@ public class Floating {
         mFloatingDecorView.addView(targetView,lp);
         
         FloatingTransition floatingAnimator = floatingElement.floatingTransition;
-        floatingAnimator.applyFloating(new YumFloating(targetView));
+        floatingAnimator.applyFloating(new YumFloating(targetView, mSpringSystem));
         
     }
     
