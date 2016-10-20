@@ -63,24 +63,27 @@ public class SpringHelper {
             throw new IllegalStateException("Hi , You mast call one of the method configBouncinessAndSpeed and configTensionAndFriction to make config");
         }
         
+        Spring spring = null;
         if (config == 0){
-            yumFloating.createSpringByBouncinessAndSpeed(configValueOne,configValueTwo)
-                    .addListener(new SimpleSpringListener(){
-                        @Override
-                        public void onSpringUpdate(Spring spring) {
-                            if (spring.getCurrentValue() == spring.getEndValue()){
-                                if (reboundListener != null){
-                                    reboundListener.onReboundEnd();
-                                }
-                            }
-                            if (reboundListener != null){
-                                reboundListener.onReboundUpdate(yumFloating.transition(spring.getCurrentValue(),startValue,endValue));
-                            }
-                        }
-                    }).setEndValue(endValue);
-            
+            spring = yumFloating.createSpringByBouncinessAndSpeed(configValueOne,configValueTwo);
+        }else if (config == 1){
+            yumFloating.createSpringByTensionAndFriction(configValueOne,configValueTwo);
         }
-        
+        if (spring != null){
+            spring.addListener(new SimpleSpringListener(){
+                @Override
+                public void onSpringUpdate(Spring spring) {
+                    if (spring.getCurrentValue() == spring.getEndValue()){
+                        if (reboundListener != null){
+                            reboundListener.onReboundEnd();
+                        }
+                    }
+                    if (reboundListener != null){
+                        reboundListener.onReboundUpdate(yumFloating.transition(spring.getCurrentValue(),startValue,endValue));
+                    }
+                }
+            }).setEndValue(endValue);
+        }
     }
   
 }
