@@ -16,7 +16,8 @@
 </p>
 
 
-License ![License](https://img.shields.io/hexpm/l/plug.svg)
+
+License 
 --------
 
     Copyright 2015 UFreedom
