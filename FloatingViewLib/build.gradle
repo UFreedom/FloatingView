@@ -30,3 +30,6 @@ dependencies {
     compile 'com.facebook.rebound:rebound:0.3.8'
     testCompile 'junit:junit:4.12'
 }
+
+apply from: "bintrayUpload.gradle"
+

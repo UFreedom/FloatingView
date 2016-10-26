@@ -7,3 +7,5 @@
 /build
 /captures
 .externalNativeBuild
+/upload_bintray.properties
+
