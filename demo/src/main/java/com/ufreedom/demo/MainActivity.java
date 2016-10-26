@@ -1,20 +1,13 @@
 package com.ufreedom.demo;
 
-import android.graphics.Color;
+import android.os.Build;
 import android.os.Bundle;
+import android.support.v4.app.FragmentManager;
 import android.support.v7.app.AppCompatActivity;
-import android.view.Gravity;
-import android.view.View;
-import android.view.ViewGroup;
-import android.widget.ImageView;
-import android.widget.LinearLayout;
-import android.widget.TextView;
-
-import com.ufreedom.floatingview.Floating;
-import com.ufreedom.floatingview.FloatingBuilder;
-import com.ufreedom.floatingview.FloatingElement;
-import com.ufreedom.floatingview.effect.CurveFloatingPathTransition;
-import com.ufreedom.floatingview.effect.TranslateFloatingTransition;
+import android.support.v7.widget.Toolbar;
+import android.view.Menu;
+import android.view.MenuItem;
+import android.view.WindowManager;
 
 public class MainActivity extends AppCompatActivity {
 
@@ -23,67 +16,48 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
-        final Floating floatingView = new Floating(this);
-
-        final View normalView = findViewById(R.id.normalView);
-
-
-        assert normalView != null;
-        normalView.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                TextView textView = new TextView(MainActivity.this);
-                textView.setBackgroundColor(Color.RED);
-                textView.setText("UFreedom");
-                FloatingElement builder = new FloatingBuilder().anchorView(view)
-                        .floatingTransition(new TranslateFloatingTransition())
-                        .target(textView).build();
-                floatingView.startFloating(builder);
-            }
-        });
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.KITKAT) {
+            WindowManager.LayoutParams localLayoutParams = getWindow().getAttributes();
+            localLayoutParams.flags = (WindowManager.LayoutParams.FLAG_TRANSLUCENT_STATUS | localLayoutParams.flags);
+        }
+        initToolbar();
         
+        FragmentManager fragmentManager = getSupportFragmentManager();
+        fragmentManager.beginTransaction().replace(R.id.containerView,SimpleFragment.newInstance())
+                .commit();
+    }
+
+    private void initToolbar() {
+        Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
+        if (toolbar != null) {
+            setSupportActionBar(toolbar);
+        }
+    }
+
+
+    @Override
+    public boolean onCreateOptionsMenu(Menu menu) {
+        super.onCreateOptionsMenu(menu);
+        getMenuInflater().inflate(R.menu.menu, menu);
+        return true;
+    }
+
+    @Override
+    public boolean onOptionsItemSelected(MenuItem item) {
+        super.onOptionsItemSelected(item);
         
-        View curveView = findViewById(R.id.curveView);
+        FragmentManager fragmentManager = getSupportFragmentManager();
 
-        assert curveView != null;
-        curveView.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                LinearLayout linearLayout = new LinearLayout(MainActivity.this);
-                linearLayout.setOrientation(LinearLayout.HORIZONTAL);
-                ImageView imageView = new ImageView(MainActivity.this);
-                imageView.setImageDrawable(getResources().getDrawable(R.mipmap.ic_launcher));
-                linearLayout.addView(imageView);
-
-                TextView textView = new TextView(MainActivity.this);
-                textView.setBackgroundColor(Color.RED);
-                textView.setText("UFreedom");
-                LinearLayout.LayoutParams layoutParams = new LinearLayout.LayoutParams(ViewGroup.LayoutParams.WRAP_CONTENT, ViewGroup.LayoutParams.WRAP_CONTENT);
-                layoutParams.gravity = Gravity.CENTER_VERTICAL;
-                linearLayout.addView(textView,layoutParams);
-
-                FloatingElement builder = new FloatingBuilder().anchorView(view)
-                        .target(linearLayout).floatingTransition(new CurveFloatingPathTransition()).build();
-                floatingView.startFloating(builder);
-
-            }
-        });
-
-        View scaleView = findViewById(R.id.scaleView);
-
-
-        assert scaleView != null;
-        scaleView.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-
-                TextView textView = new TextView(MainActivity.this);
-                textView.setBackgroundColor(Color.RED);
-                textView.setText("UFreedom");
-                FloatingElement builder = new FloatingBuilder().anchorView(view)
-                        .target(textView).build();
-                floatingView.startFloating(builder);
-            }
-        });
+        switch (item.getItemId()) {
+            case R.id.menu_simple:
+                fragmentManager.beginTransaction().replace(R.id.containerView, SimpleFragment.newInstance())
+                        .commit();
+                break;
+            case R.id.menu_rv:
+                fragmentManager.beginTransaction().replace(R.id.containerView, RecyclerViewFragment.newInstance())
+                        .commit();
+                break;
+        }
+        return true;
     }
 }

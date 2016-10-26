@@ -3,4 +3,11 @@
     <color name="colorPrimary">#3F51B5</color>
     <color name="colorPrimaryDark">#303F9F</color>
     <color name="colorAccent">#FF4081</color>
+
+    <color name="fab">#F19BA2</color>
+    <color name="fab_highlight">#CB747B</color>
+    <color name="green">#4E8186</color>
+    <color name="statusbar2">#3E676B</color>
+    <color name="white">#FFFFFF</color>
+
 </resources>
