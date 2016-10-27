@@ -54,7 +54,7 @@ Usage
 * target：目标，你想漂浮的 View
 * offsetX：x 方向的偏移量，单位 px
 * offsetY: y 方向的偏移量，单位 px
-* floatingTransition : 漂浮效果，默认是 ScaleFloatingTransition
+* floatingTransition : 漂浮效果，默认是 ScaleFloatingTransition，也可以自己实现漂浮效果
 
 ### Step 3 
 
@@ -64,26 +64,26 @@ Usage
     Floating floating = new Floating(getActivity());
     floating.startFloating(builder);
 ```
- 
+
 
 自定义
 -----
 
 
-####坐标系
+####1.坐标系
 
  <img src="http://oeapkptbn.bkt.clouddn.com/coordinate.png" width="572" height="427"/>
 
 
-####类图
+####2.类图
 
  <img src="http://oeapkptbn.bkt.clouddn.com/classdiagram.png" width="831" height="428"/>
 
 
 
-####漂浮动画 
+####3.漂浮动画 
 
-实现漂浮动画很简单，你只需要实现 [FloatingTransition][4] 就可以:
+实现漂浮动画很简单，你只需要实现 [FloatingTransition][4] 接口就可以:
 
 ```java
 
@@ -93,9 +93,9 @@ Usage
 
 ```
 
-在 `applyFloating` 方法内，你可以是 Android Animation 创建动画，然后使用 YumFloating 进行 Alpha,Scale,Translate,Rotate 等变换
+在 `applyFloating` 方法，你可以使用 Android Animation 创建动画，然后使用 [YumFloating][6] 进行 Alpha,Scale,Translate,Rotate 等变换
 
-如果你想加入 [Facebook Rebound][5] 回弹动画效果，你可以使用 SpringHelper,例如 ScaleFloatingTransition:
+如果你想加入 [Facebook Rebound][5] 回弹动画效果，你可以使用 [SpringHelper][7],例如 [ScaleFloatingTransition][8]:
 
 ```java
     public class ScaleFloatingTransition implements FloatingTransition {
@@ -130,12 +130,92 @@ Usage
 
 ```
 
-如果 
+如果 [SpringHelper][7] 无法满足你的需求，你可以直接使用 [YumFloating][6] 的 `createSpringByBouncinessAndSpeed(double bounciness, double speed)` 或者
+ `createSpringByTensionAndFriction(double tension, double friction)` 创建 Spring, 然后使用 `transition(double progress, float startValue, float endValue)` 进行数值转换
  
  
-####漂浮路径动画 
+####4.路径漂浮动画 
+实现路径漂浮同样很简单，例如 [CurveFloatingPathTransition][9] ,首先你需要继承 [BaseFloatingPathTransition][10] 类.和继承 [FloatingTransition][4] 类不同的是，你需要再实现一个 `getFloatingPath()` 方法. 
+在 `getFloatingPath()` 方法内使用 `Path` 创建你想漂浮的路径，然后调用 `FloatingPath.create(path, false)` 进行返回. 例如 [CurveFloatingPathTransition][9] 实现：
 
- 
+```java
+    public class CurveFloatingPathTransition extends BaseFloatingPathTransition {
+
+        ...
+      
+        @Override
+        public FloatingPath getFloatingPath() {
+            if (path == null){
+                path = new Path();
+                path.moveTo(0, 0);
+                path.quadTo(-100, -200, 0, -300);
+                path.quadTo(200, -400, 0, -500);
+            }
+            return FloatingPath.create(path, false);
+        }
+
+        @Override
+        public void applyFloating(final YumFloating yumFloating) {
+            ValueAnimator translateAnimator;
+            ValueAnimator alphaAnimator;
+    
+            
+            translateAnimator = ObjectAnimator.ofFloat(getStartPathPosition(), getEndPathPosition());
+            translateAnimator.addUpdateListener(new ValueAnimator.AnimatorUpdateListener() {
+                @Override
+                public void onAnimationUpdate(ValueAnimator valueAnimator) {
+                    float value = (float) valueAnimator.getAnimatedValue();
+                    PathPosition floatingPosition = getFloatingPosition(value);
+                    yumFloating.setTranslationX(floatingPosition.x);
+                    yumFloating.setTranslationY(floatingPosition.y);
+    
+                }
+            });
+            translateAnimator.addListener(new AnimatorListenerAdapter() {
+                @Override
+                public void onAnimationEnd(Animator animation) {
+                    super.onAnimationEnd(animation);
+                    yumFloating.setTranslationX(0);
+                    yumFloating.setTranslationY(0);
+                    yumFloating.setAlpha(0f);
+                }
+            });
+    
+    
+            alphaAnimator = ObjectAnimator.ofFloat(1.0f, 0f);
+            alphaAnimator.setDuration(3000);
+            alphaAnimator.addUpdateListener(new ValueAnimator.AnimatorUpdateListener() {
+                @Override
+                public void onAnimationUpdate(ValueAnimator valueAnimator) {
+                    yumFloating.setAlpha((Float) valueAnimator.getAnimatedValue());
+                }
+            });
+            
+            SpringHelper.createWidthBouncinessAndSpeed(0.0f, 1.0f,11, 15)
+                    .reboundListener(new SimpleReboundListener(){
+                        @Override
+                        public void onReboundUpdate(double currentValue) {
+                            yumFloating.setScaleX((float) currentValue);
+                            yumFloating.setScaleY((float) currentValue);
+                        }
+                    }).start(yumFloating);  
+            
+            translateAnimator.setDuration(3000);
+            translateAnimator.setStartDelay(50);
+            translateAnimator.start();
+            alphaAnimator.start();
+        }
+    
+}
+```
+
+使用 Path 将你想要漂浮的路径的描绘出来，然后在 `applyFloating(final YumFloating yumFloating)` 方法中:
+
+* 使用 `getStartPathPosition()` 方法获取路径的开始位置
+* 使用 `getEndPathPosition()`方法获取路径的结束位置
+* 使用 `getFloatingPosition(float progress)` 获取当前进度的位置
+
+`getFloatingPosition(float progress)` 方法会返回一个 `PathPosition` 对象，其属性 x,y 分别代表当前路径动画的 x 坐标，和 y 坐标. 
  
  
 License 
@@ -160,3 +240,8 @@ License
 [3]:https://github.com/UFreedom/FloatingView/blob/master/FloatingViewLib/src/main/java/com/ufreedom/floatingview/Floating.java
 [4]:https://github.com/UFreedom/FloatingView/blob/master/FloatingViewLib/src/main/java/com/ufreedom/floatingview/transition/FloatingTransition.java
 [5]:http://facebook.github.io/rebound/
+[6]:https://github.com/UFreedom/FloatingView/blob/master/FloatingViewLib/src/main/java/com/ufreedom/floatingview/transition/YumFloating.java
+[7]:https://github.com/UFreedom/FloatingView/blob/master/FloatingViewLib/src/main/java/com/ufreedom/floatingview/spring/SpringHelper.java
+[8]:https://github.com/UFreedom/FloatingView/blob/master/FloatingViewLib/src/main/java/com/ufreedom/floatingview/effect/ScaleFloatingTransition.java
+[9]:https://github.com/UFreedom/FloatingView/blob/master/FloatingViewLib/src/main/java/com/ufreedom/floatingview/effect/CurveFloatingPathTransition.java
+[10]:https://github.com/UFreedom/FloatingView/blob/master/FloatingViewLib/src/main/java/com/ufreedom/floatingview/transition/BaseFloatingPathTransition.java
