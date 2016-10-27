@@ -35,7 +35,7 @@ Usage
 
 ### Step 2
 
-使用 FloatingBuilder 创建一个 FloatingElement
+使用 [FloatingBuilder][1] 创建一个 [FloatingElement][2]
 
 ```java
 
@@ -58,7 +58,7 @@ Usage
 
 ### Step 3 
 
-创建一个 Floating 作为 FloatingElement 的容器,然后让你的 View 飞起来
+创建一个 [Floating][3] 作为 [FloatingElement][2] 的容器,然后让你的 View 飞起来
  
 ```java
     Floating floating = new Floating(getActivity());
@@ -83,7 +83,7 @@ Usage
 
 ####漂浮动画 
 
-实现漂浮动画很简单，你只需要实现 FloatingTransition 就可以:
+实现漂浮动画很简单，你只需要实现 [FloatingTransition][4] 就可以:
 
 ```java
 
@@ -93,6 +93,49 @@ Usage
 
 ```
 
+在 `applyFloating` 方法内，你可以是 Android Animation 创建动画，然后使用 YumFloating 进行 Alpha,Scale,Translate,Rotate 等变换
+
+如果你想加入 [Facebook Rebound][5] 回弹动画效果，你可以使用 SpringHelper,例如 ScaleFloatingTransition:
+
+```java
+    public class ScaleFloatingTransition implements FloatingTransition {
+
+    ...
+    
+    @Override
+    public void applyFloating(final YumFloating yumFloating) {
+        
+        ValueAnimator alphaAnimator = ObjectAnimator.ofFloat(1.0f, 0.0f);
+        alphaAnimator.setDuration(duration);
+        alphaAnimator.addUpdateListener(new ValueAnimator.AnimatorUpdateListener() {
+            @Override
+            public void onAnimationUpdate(ValueAnimator valueAnimator) {
+                yumFloating.setAlpha((Float) valueAnimator.getAnimatedValue());
+            }
+        });
+        alphaAnimator.start();
+
+        SpringHelper.createWidthBouncinessAndSpeed(0.0f, 1.0f,bounciness, speed)
+                .reboundListener(new SimpleReboundListener(){
+                    @Override
+                    public void onReboundUpdate(double currentValue) {
+                        yumFloating.setScaleX((float) currentValue);
+                        yumFloating.setScaleY((float) currentValue);
+                    }
+                }).start(yumFloating);
+    }
+    
+}
+
+
+```
+
+如果 
+ 
+ 
+####漂浮路径动画 
+
+ 
  
  
 License 
@@ -111,3 +154,9 @@ License
     WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
     See the License for the specific language governing permissions and
     limitations under the License.
+
+[1]:https://github.com/UFreedom/FloatingView/blob/master/FloatingViewLib/src/main/java/com/ufreedom/floatingview/FloatingBuilder.java
+[2]:https://github.com/UFreedom/FloatingView/blob/master/FloatingViewLib/src/main/java/com/ufreedom/floatingview/FloatingElement.java
+[3]:https://github.com/UFreedom/FloatingView/blob/master/FloatingViewLib/src/main/java/com/ufreedom/floatingview/Floating.java
+[4]:https://github.com/UFreedom/FloatingView/blob/master/FloatingViewLib/src/main/java/com/ufreedom/floatingview/transition/FloatingTransition.java
+[5]:http://facebook.github.io/rebound/
