@@ -67,21 +67,21 @@ Usage
  
 
 自定义
----
+-----
 
 
-#### 坐标系
+####坐标系
 
- <img src="https://github.com/UFreedom/FloatingView/blob/master/images/coordinate.png" width="572" height="427"/>
-
-
-#### 类图
-
- <img src="https://github.com/UFreedom/FloatingView/blob/master/images/classdiagram.png" width="831" height="428"/>
+ <img src="http://oeapkptbn.bkt.clouddn.com/coordinate.png" width="572" height="427"/>
 
 
+####类图
 
-#### 漂浮动画 
+ <img src="http://oeapkptbn.bkt.clouddn.com/classdiagram.png" width="831" height="428"/>
+
+
+
+####漂浮动画 
 
 实现漂浮动画很简单，你只需要实现 FloatingTransition 就可以:
 

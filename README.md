@@ -76,17 +76,17 @@ Create a Floating as a FloatingElement container, and then let your View fly up
 
  
 Customisation
- ---
+-------------
  
  
- #### Coordinates
+####Coordinates
  
-  <img src="https://github.com/UFreedom/FloatingView/blob/master/images/coordinate.png" width="572" height="427"/>
+  <img src="http://oeapkptbn.bkt.clouddn.com/coordinate.png" width="572" height="427"/>
  
  
- #### Class diagram
+####Class diagram
  
-  <img src="https://github.com/UFreedom/FloatingView/blob/master/images/classdiagram.png" width="831" height="428"/>
+  <img src="http://oeapkptbn.bkt.clouddn.com/classdiagram.png" width="831" height="428"/>
 
 
 License 
