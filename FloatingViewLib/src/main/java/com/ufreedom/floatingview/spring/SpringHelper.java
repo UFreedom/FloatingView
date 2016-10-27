@@ -2,6 +2,7 @@ package com.ufreedom.floatingview.spring;
 
 import com.facebook.rebound.SimpleSpringListener;
 import com.facebook.rebound.Spring;
+import com.facebook.rebound.SpringListener;
 import com.ufreedom.floatingview.transition.YumFloating;
 
 /**
@@ -17,6 +18,7 @@ public class SpringHelper {
     private double configValueTwo;
     private int config;
     private ReboundListener reboundListener;
+    private SpringListener springListener;
 
     private SpringHelper(float startValue, float endValue) {
         this.startValue = startValue;
@@ -57,6 +59,11 @@ public class SpringHelper {
         return this;
     }
     
+    public SpringHelper springListener(SpringListener springListener){
+        this.springListener = springListener;
+        return this;
+    }
+    
     
     public void start(final YumFloating yumFloating){
         if (config == -1){
@@ -70,6 +77,11 @@ public class SpringHelper {
             yumFloating.createSpringByTensionAndFriction(configValueOne,configValueTwo);
         }
         if (spring != null){
+            
+            if (springListener != null){
+                spring.addListener(springListener);
+            }
+            
             spring.addListener(new SimpleSpringListener(){
                 @Override
                 public void onSpringUpdate(Spring spring) {
