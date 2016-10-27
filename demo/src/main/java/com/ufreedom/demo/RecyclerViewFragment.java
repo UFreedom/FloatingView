@@ -91,6 +91,8 @@ public class RecyclerViewFragment extends Fragment {
                     FloatingElement builder = new FloatingBuilder()
                             .anchorView(v)
                             .target(textView)
+                            .offsetX(1)
+                            .offsetY(1)
                             .floatingTransition(new TranslateFloatingTransition())
                             .build();
                     floating.startFloating(builder);

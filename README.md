@@ -84,11 +84,11 @@ Customisation
   <img src="http://oeapkptbn.bkt.clouddn.com/coordinate.png" width="572" height="427"/>
  
  
-####Class diagram
+####Class Diagram
  
   <img src="http://oeapkptbn.bkt.clouddn.com/classdiagram.png" width="831" height="428"/>
 
-####3.漂浮动画 
+####3.Floating Animation 
 
 Implementation of floating animation is very simple, you only need to implement the [FloatingTransition][4] interface
 
@@ -140,7 +140,7 @@ If you want to add the [Facebook Rebound][5]  animation effect, you can use the 
 If [SpringHelper][7] can not meet your needs, you can directly use the `createSpringByBouncinessAndSpeed(double bounciness, double speed)`, or
 `createSpringByTensionAndFriction(double tension, double friction)` to create the Spring, and then use `transition (Progress double, startValue float, endValue float)` for numerical conversion
  
-####4.路径漂浮动画 
+####4.Floating Path Animation
 The floating path animation is also very simple, such as [CurveFloatingPathTransition][9], first you need to inherit from the [BaseFloatingPathTransition][10] class and [FloatingTransition][4] class inheritance. The difference is, you need to implement a `getFloatingPath (`) method.
 Use `Path` in the `getFloatingPath () `method to create the path you want to float, and then call `FloatingPath.create (path, false)` to return. For example, [CurveFloatingPathTransition][9] implementation:
 
@@ -177,39 +177,8 @@ Use `Path` in the `getFloatingPath () `method to create the path you want to flo
     
                 }
             });
-            translateAnimator.addListener(new AnimatorListenerAdapter() {
-                @Override
-                public void onAnimationEnd(Animator animation) {
-                    super.onAnimationEnd(animation);
-                    yumFloating.setTranslationX(0);
-                    yumFloating.setTranslationY(0);
-                    yumFloating.setAlpha(0f);
-                }
-            });
-    
-    
-            alphaAnimator = ObjectAnimator.ofFloat(1.0f, 0f);
-            alphaAnimator.setDuration(3000);
-            alphaAnimator.addUpdateListener(new ValueAnimator.AnimatorUpdateListener() {
-                @Override
-                public void onAnimationUpdate(ValueAnimator valueAnimator) {
-                    yumFloating.setAlpha((Float) valueAnimator.getAnimatedValue());
-                }
-            });
-            
-            SpringHelper.createWidthBouncinessAndSpeed(0.0f, 1.0f,11, 15)
-                    .reboundListener(new SimpleReboundListener(){
-                        @Override
-                        public void onReboundUpdate(double currentValue) {
-                            yumFloating.setScaleX((float) currentValue);
-                            yumFloating.setScaleY((float) currentValue);
-                        }
-                    }).start(yumFloating);  
-            
-            translateAnimator.setDuration(3000);
-            translateAnimator.setStartDelay(50);
-            translateAnimator.start();
-            alphaAnimator.start();
+               
+           ...
         }
     
 }
