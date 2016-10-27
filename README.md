@@ -86,7 +86,7 @@ Customisation
  
 ####2.Class Diagram
  
-  <img src="http://oeapkptbn.bkt.clouddn.com/classdiagram.png" width="831" height="428"/>
+  <img src="http://oeapkptbn.bkt.clouddn.com/class_diagram.png" width="831" height="428"/>
 
 ####3.Floating Animation 
 
