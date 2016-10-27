@@ -20,12 +20,24 @@ import com.ufreedom.floatingview.spring.SimpleReboundListener;
 
 public class CurveFloatingPathTransition extends BaseFloatingPathTransition {
 
+    private Path path;
+
+    public CurveFloatingPathTransition() {
+        
+    }
+
+    public CurveFloatingPathTransition(Path path) {
+        this.path = path;
+    }
+
     @Override
     public FloatingPath getFloatingPath() {
-        Path path = new Path();
-        path.moveTo(0, 0);
-        path.quadTo(-100, -200, 0, -300);
-        path.quadTo(200, -400, 0, -500);
+        if (path == null){
+            path = new Path();
+            path.moveTo(0, 0);
+            path.quadTo(-100, -200, 0, -300);
+            path.quadTo(200, -400, 0, -500);
+        }
         return FloatingPath.create(path, false);
     }
 
