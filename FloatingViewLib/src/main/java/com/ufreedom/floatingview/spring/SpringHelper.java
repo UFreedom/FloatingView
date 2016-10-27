@@ -2,7 +2,7 @@ package com.ufreedom.floatingview.spring;
 
 import com.facebook.rebound.SimpleSpringListener;
 import com.facebook.rebound.Spring;
-import com.ufreedom.floatingview.YumFloating;
+import com.ufreedom.floatingview.transition.YumFloating;
 
 /**
  * Author UFreedom

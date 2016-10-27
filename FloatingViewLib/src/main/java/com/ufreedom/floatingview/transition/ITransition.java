@@ -5,7 +5,7 @@ package com.ufreedom.floatingview.transition;
  * Date : 2016 十月 18
  */
 
-public interface IFloating {
+public interface ITransition {
 
 
     public void setAlpha(float alpha);

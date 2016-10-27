@@ -3,7 +3,7 @@ package com.ufreedom.floatingview.effect;
 import android.animation.ObjectAnimator;
 import android.animation.ValueAnimator;
 
-import com.ufreedom.floatingview.YumFloating;
+import com.ufreedom.floatingview.transition.YumFloating;
 import com.ufreedom.floatingview.transition.FloatingTransition;
 import com.ufreedom.floatingview.spring.SimpleReboundListener;
 import com.ufreedom.floatingview.spring.SpringHelper;

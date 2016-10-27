@@ -1,4 +1,4 @@
-package com.ufreedom.floatingview;
+package com.ufreedom.floatingview.transition;
 
 import android.view.View;
 
@@ -6,15 +6,13 @@ import com.facebook.rebound.Spring;
 import com.facebook.rebound.SpringConfig;
 import com.facebook.rebound.SpringSystem;
 import com.facebook.rebound.SpringUtil;
-import com.ufreedom.floatingview.transition.IFloating;
-import com.ufreedom.floatingview.transition.Rebound;
 
 /**
  * Author UFreedom
  * Date : 2016 十月 19
  */
 
-public class YumFloating implements IFloating, Rebound {
+public class YumFloating implements ITransition, Rebound {
 
     private SpringSystem springSystem;
     private View targetView;

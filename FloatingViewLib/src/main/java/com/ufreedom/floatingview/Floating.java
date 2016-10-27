@@ -11,6 +11,7 @@ import android.widget.FrameLayout;
 
 import com.facebook.rebound.SpringSystem;
 import com.ufreedom.floatingview.transition.FloatingTransition;
+import com.ufreedom.floatingview.transition.YumFloating;
 
 
 /**

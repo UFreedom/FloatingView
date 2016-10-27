@@ -6,7 +6,7 @@ import android.animation.ObjectAnimator;
 import android.animation.ValueAnimator;
 import android.graphics.Path;
 
-import com.ufreedom.floatingview.YumFloating;
+import com.ufreedom.floatingview.transition.YumFloating;
 import com.ufreedom.floatingview.transition.BaseFloatingPathTransition;
 import com.ufreedom.floatingview.transition.FloatingPath;
 import com.ufreedom.floatingview.transition.PathPosition;
