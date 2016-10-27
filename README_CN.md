@@ -17,19 +17,12 @@
 <a target="_blank" href='https://github.com/UFreedom/FloatingView/blob/master/LICENSE.txt'><img src='https://img.shields.io/crates/l/rustc-serialize.svg'  /></a>
 </p>
 
-
-Links
------
-- [中文版 README](https://github.com/UFreedom/FloatingView/blob/master/README_CN.md)
-
-
-
 Usage
 -----
 
 ### Step 1
 
-Add dependencies in build.gradle.
+在 build.gradle 文件中添加库依赖
 
 ```groovy
 dependencies {
@@ -42,7 +35,7 @@ dependencies {
 
 ### Step 2
 
-Use FloatingBuilder to create a FloatingElement
+使用 FloatingBuilder 创建一个 FloatingElement
 
 ```java
 
@@ -56,25 +49,24 @@ Use FloatingBuilder to create a FloatingElement
 
 ```
 
-The use of FloatingBuilder can be configured to have：
-
-* anchorView ：Anchor, is you want to float animation in which View above
-* target：Target, The view which you want to float 
-* offsetX：X direction of offset, unit PX
-* offsetY: Y direction of offset, unit PX
-* floatingTransition : Floating effect, the default is ScaleFloatingTransition
-
+使用 FloatingBuilder 可以设置的有
+* anchorView ：锚点，也就是你想在哪个 View 上面进行漂浮动画
+* target：目标，你想漂浮的 View
+* offsetX：x 方向的偏移量，单位 px
+* offsetY: y 方向的偏移量，单位 px
+* floatingTransition : 漂浮效果，默认是 ScaleFloatingTransition
 
 ### Step 3 
 
-Create a Floating as a FloatingElement container, and then let your View fly up
+创建一个 Floating 作为 FloatingElement 的容器,然后让你的 View 飞起来
  
 ```java
         Floating floating = new Floating(getActivity());
         floating.startFloating(builder);
 ```
  
-
+ 
+ 
 License 
 --------
 
