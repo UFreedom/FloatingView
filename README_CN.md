@@ -65,6 +65,34 @@ Usage
     floating.startFloating(builder);
 ```
  
+
+自定义
+---
+
+
+#### 坐标系
+
+ <img src="https://github.com/UFreedom/FloatingView/blob/master/images/coordinate.png" width="572" height="427"/>
+
+
+#### 类图
+
+ <img src="https://github.com/UFreedom/FloatingView/blob/master/images/classdiagram.png" width="831" height="428"/>
+
+
+
+#### 漂浮动画 
+
+实现漂浮动画很简单，你只需要实现 FloatingTransition 就可以:
+
+```java
+
+    public interface FloatingTransition {
+        public void applyFloating(YumFloating yumFloating);
+    }
+
+```
+
  
  
 License 

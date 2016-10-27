@@ -73,7 +73,21 @@ Create a Floating as a FloatingElement container, and then let your View fly up
     Floating floating = new Floating(getActivity());
     floating.startFloating(builder);
 ```
+
  
+Customisation
+ ---
+ 
+ 
+ #### Coordinates
+ 
+  <img src="https://github.com/UFreedom/FloatingView/blob/master/images/coordinate.png" width="572" height="427"/>
+ 
+ 
+ #### Class diagram
+ 
+  <img src="https://github.com/UFreedom/FloatingView/blob/master/images/classdiagram.png" width="831" height="428"/>
+
 
 License 
 --------
