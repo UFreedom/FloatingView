@@ -1,4 +1,4 @@
-package com.ufreedom.floatingview;
+package com.ufreedom.floatingview.transition;
 
 /**
  * Author UFreedom

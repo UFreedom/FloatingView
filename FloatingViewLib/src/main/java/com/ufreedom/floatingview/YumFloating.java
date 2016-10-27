@@ -6,6 +6,8 @@ import com.facebook.rebound.Spring;
 import com.facebook.rebound.SpringConfig;
 import com.facebook.rebound.SpringSystem;
 import com.facebook.rebound.SpringUtil;
+import com.ufreedom.floatingview.transition.IFloating;
+import com.ufreedom.floatingview.transition.Rebound;
 
 /**
  * Author UFreedom
