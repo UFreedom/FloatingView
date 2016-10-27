@@ -32,9 +32,9 @@ Usage
 Add dependencies in build.gradle.
 
 ```groovy
-dependencies {
-     compile 'com.ufreedom.uikit:FloatingViewLib:1.0.0'
-}
+    dependencies {
+        compile 'com.ufreedom.uikit:FloatingViewLib:1.0.0'
+    }
 
 ```
 
@@ -46,7 +46,7 @@ Use FloatingBuilder to create a FloatingElement
 
 ```java
 
-   FloatingElement builder = new FloatingBuilder()
+    FloatingElement builder = new FloatingBuilder()
                             .anchorView(View)
                             .target(View)
                             .offsetX(int)
@@ -70,8 +70,8 @@ The use of FloatingBuilder can be configured to have：
 Create a Floating as a FloatingElement container, and then let your View fly up
  
 ```java
-        Floating floating = new Floating(getActivity());
-        floating.startFloating(builder);
+    Floating floating = new Floating(getActivity());
+    floating.startFloating(builder);
 ```
  
 

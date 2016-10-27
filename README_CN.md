@@ -25,9 +25,9 @@ Usage
 在 build.gradle 文件中添加库依赖
 
 ```groovy
-dependencies {
-     compile 'com.ufreedom.uikit:FloatingViewLib:1.0.0'
-}
+    dependencies {
+        compile 'com.ufreedom.uikit:FloatingViewLib:1.0.0'
+    }
 
 ```
 
@@ -39,7 +39,7 @@ dependencies {
 
 ```java
 
-   FloatingElement builder = new FloatingBuilder()
+    FloatingElement builder = new FloatingBuilder()
                             .anchorView(View)
                             .target(View)
                             .offsetX(int)
@@ -61,8 +61,8 @@ dependencies {
 创建一个 Floating 作为 FloatingElement 的容器,然后让你的 View 飞起来
  
 ```java
-        Floating floating = new Floating(getActivity());
-        floating.startFloating(builder);
+    Floating floating = new Floating(getActivity());
+    floating.startFloating(builder);
 ```
  
  
