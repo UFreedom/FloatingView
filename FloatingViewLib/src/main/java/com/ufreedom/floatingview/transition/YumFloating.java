@@ -1,6 +1,8 @@
 package com.ufreedom.floatingview.transition;
 
 import android.view.View;
+import android.view.ViewGroup;
+import android.view.ViewParent;
 
 import com.facebook.rebound.Spring;
 import com.facebook.rebound.SpringConfig;
@@ -8,8 +10,6 @@ import com.facebook.rebound.SpringSystem;
 import com.facebook.rebound.SpringUtil;
 
 import java.lang.ref.WeakReference;
-
-import static android.R.attr.rotationX;
 
 /**
  * Author UFreedom
@@ -151,5 +151,17 @@ public class YumFloating implements ITransition, Rebound {
         return (float) SpringUtil.mapValueFromRangeToRange(progress, 0, 1, startValue, endValue);
     }
     
+    
+    public void clear(){
+        View view = getTargetView();
+        if (view != null){
+            ViewParent viewParent =  view.getParent();
+            if (viewParent instanceof ViewGroup){
+                ViewGroup parent = (ViewGroup) viewParent;
+                parent.removeView(view);
+                targetViewWeakReference.clear();
+            }
+        }
+    }
     
 }
