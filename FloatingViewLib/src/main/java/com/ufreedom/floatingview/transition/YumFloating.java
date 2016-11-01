@@ -7,6 +7,10 @@ import com.facebook.rebound.SpringConfig;
 import com.facebook.rebound.SpringSystem;
 import com.facebook.rebound.SpringUtil;
 
+import java.lang.ref.WeakReference;
+
+import static android.R.attr.rotationX;
+
 /**
  * Author UFreedom
  * Date : 2016 十月 19
@@ -15,80 +19,118 @@ import com.facebook.rebound.SpringUtil;
 public class YumFloating implements ITransition, Rebound {
 
     private SpringSystem springSystem;
-    private View targetView;
+    private WeakReference<View> targetViewWeakReference;
     
     public YumFloating(View targetView, SpringSystem springSystem) {
-        this.targetView = targetView;
+        targetViewWeakReference = new WeakReference<View>(targetView);
         this.springSystem = springSystem;
     }
 
 
     public YumFloating(View targetView) {
-        this.targetView = targetView;
+        targetViewWeakReference = new WeakReference<View>(targetView);
+
     }
 
     public View getTargetView() {
-        return targetView;
+        return targetViewWeakReference.get();
     }
 
     @Override
     public void setAlpha(float alpha) {
-        targetView.setAlpha(alpha);
+        View targetView;
+        if ((targetView = getTargetView()) !=null){
+            targetView.setAlpha(alpha);
+        }
     }
 
     @Override
     public void setRotation(float rotation) {
-        targetView.setRotation(rotation);
+        View targetView;
+        if ((targetView = getTargetView()) !=null){
+            targetView.setRotation(rotation);
+        }
     }
 
     @Override
     public void setRotationX(float rotationX) {
-        targetView.setRotationX(rotationX);
+        View targetView;
+        if ((targetView = getTargetView()) !=null){
+            targetView.setRotationX(rotationX);
+        }
     }
 
     @Override
     public void setRotationY(float rotationY) {
-        targetView.setRotationY(rotationY);
+        View targetView;
+        if ((targetView = getTargetView()) !=null){
+            targetView.setRotationY(rotationY);
+        }
     }
 
     @Override
     public void setScaleX(float scaleX) {
-        targetView.setScaleX(scaleX);
+        View targetView;
+        if ((targetView = getTargetView()) !=null){
+            targetView.setScaleX(scaleX);
+        }
     }
 
     @Override
     public void setScaleY(float scaleY) {
-        targetView.setScaleY(scaleY);
+        View targetView;
+        if ((targetView = getTargetView()) !=null){
+            targetView.setScaleY(scaleY);
+        }
     }
 
     @Override
     public void setScrollX(int scrollX) {
-        targetView.setScaleX(scrollX);
+        View targetView;
+        if ((targetView = getTargetView()) !=null){
+            targetView.setScaleX(scrollX);
+        }
     }
 
     @Override
     public void setScrollY(int scrollY) {
-        targetView.setScaleY(scrollY);
+        View targetView;
+        if ((targetView = getTargetView()) !=null){
+            targetView.setScaleY(scrollY);
+        }
+      
     }
 
     @Override
     public void setTranslationX(float translationX) {
-        targetView.setTranslationX(translationX);
+        View targetView;
+        if ((targetView = getTargetView()) !=null){
+            targetView.setTranslationX(translationX);
+        }
     }
 
     @Override
     public void setTranslationY(float translationY) {
-        targetView.setTranslationY(translationY);
+        View targetView;
+        if ((targetView = getTargetView()) !=null){
+            targetView.setTranslationY(translationY);
+        }
     }
 
     @Override
     public void setX(float x) {
-        targetView.setX(x);
+        View targetView;
+        if ((targetView = getTargetView()) !=null){
+            targetView.setX(x);
+        }
     }
 
     @Override
     public void setY(float y) {
-        targetView.setY(y);
+        View targetView;
+        if ((targetView = getTargetView()) !=null){
+            targetView.setY(y);
+        }
     }
 
 
