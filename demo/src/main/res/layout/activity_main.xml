@@ -3,27 +3,166 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="@color/colorPrimary"
     android:gravity="center_horizontal"
     android:orientation="vertical"
     tools:context=".MainActivity">
 
-    <android.support.v7.widget.Toolbar xmlns:android="http://schemas.android.com/apk/res/android"
-        xmlns:app="http://schemas.android.com/apk/res-auto"
+    <RelativeLayout
         android:id="@+id/toolbar"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:paddingTop="@dimen/toolbar_padding_top"
-        android:background="@color/colorPrimary"
-        android:minHeight="?attr/actionBarSize"
-        app:theme="@style/ThemeOverlay.AppCompat.Dark.ActionBar"
-        app:popupTheme="@style/ThemeOverlay.AppCompat.Light" />
-   
-    <FrameLayout
-        android:id="@+id/containerView"
-        android:layout_below="@+id/toolbar"
-        android:layout_width="match_parent"
-        android:layout_height="match_parent" />
+        android:layout_height="@dimen/tool_bar_height"
+        android:layout_alignParentTop="true">
 
-   
+        <View
+            android:id="@+id/statusBar"
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/status_bar_height" />
+
+        <ImageView
+            android:layout_width="162dp"
+            android:layout_height="32dp"
+            android:layout_alignParentBottom="true"
+            android:layout_centerHorizontal="true"
+            android:src="@drawable/floating_view_title" />
+
+    </RelativeLayout>
+
+    <RelativeLayout
+        android:id="@+id/itemBikeContainerView"
+        android:layout_width="330.3dp"
+        android:layout_height="175.3dp"
+        android:layout_below="@+id/toolbar"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="30dp"
+        android:gravity="center">
+
+        <ImageView
+            android:id="@+id/bikeBg"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:scaleType="fitXY"
+            android:src="@drawable/bg_item" />
+
+        <ImageView
+            android:layout_width="139.7dp"
+            android:layout_height="95dp"
+            android:layout_centerHorizontal="true"
+            android:layout_marginTop="20dp"
+            android:src="@drawable/bike" />
+
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentBottom="true"
+            android:layout_centerHorizontal="true"
+            android:layout_marginBottom="20dp"
+            android:orientation="horizontal">
+
+            <ImageView
+                android:id="@+id/icPaperAirPlane"
+                android:layout_width="@dimen/bottom_op_item_w"
+                android:layout_height="@dimen/bottom_op_item_h"
+                android:src="@drawable/paper_airplane" />
+
+            <ImageView
+                android:id="@+id/icCommandLine"
+                android:layout_width="@dimen/bottom_op_item_w"
+                android:layout_height="@dimen/bottom_op_item_h"
+                android:layout_marginLeft="51.7dp"
+                android:src="@drawable/command_line" />
+
+
+            <ImageView
+                android:id="@+id/icLike"
+                android:layout_width="@dimen/bottom_op_item_w"
+                android:layout_height="@dimen/bottom_op_item_h"
+                android:layout_marginLeft="51.7dp"
+                android:src="@drawable/like" />
+
+            <ImageView
+                android:id="@+id/icStar"
+                android:layout_width="@dimen/bottom_op_item_w"
+                android:layout_height="@dimen/bottom_op_item_h"
+                android:layout_marginLeft="51.7dp"
+                android:src="@drawable/star" />
+
+
+        </LinearLayout>
+
+    </RelativeLayout>
+
+    <RelativeLayout
+        android:id="@+id/itemClockContainerView"
+        android:layout_width="330.3dp"
+        android:layout_height="175.3dp"
+        android:layout_below="@+id/itemBikeContainerView"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="30dp"
+        android:gravity="center">
+
+        <ImageView
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:scaleType="fitXY"
+            android:src="@drawable/bg_item" />
+
+        <ImageView
+            android:layout_width="139.7dp"
+            android:layout_height="95dp"
+            android:layout_centerHorizontal="true"
+            android:layout_marginTop="20dp"
+            android:src="@drawable/clock" />
+
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentBottom="true"
+            android:layout_centerHorizontal="true"
+            android:layout_marginBottom="20dp"
+            android:orientation="horizontal">
+
+            <ImageView
+                android:id="@+id/icBeer"
+                android:layout_width="@dimen/bottom_op_item_w"
+                android:layout_height="@dimen/bottom_op_item_h"
+                android:src="@drawable/beer" />
+
+            <ImageView
+                android:id="@+id/icMilk"
+                android:layout_width="@dimen/bottom_op_item_w"
+                android:layout_height="@dimen/bottom_op_item_h"
+                android:layout_marginLeft="51.7dp"
+                android:src="@drawable/milk" />
+
+
+            <ImageView
+                android:id="@+id/icSoda"
+                android:layout_width="@dimen/bottom_op_item_w"
+                android:layout_height="@dimen/bottom_op_item_h"
+                android:layout_marginLeft="51.7dp"
+                android:src="@drawable/soda" />
+
+            <ImageView
+                android:id="@+id/icCream"
+                android:layout_width="@dimen/bottom_op_item_w"
+                android:layout_height="@dimen/bottom_op_item_h"
+                android:layout_marginLeft="51.7dp"
+                android:src="@drawable/ice_cream" />
+
+
+        </LinearLayout>
+
+    </RelativeLayout>
+
+
+    <ImageView
+        android:id="@+id/icPlane"
+        android:layout_width="62dp"
+        android:layout_height="62dp"
+        android:layout_marginBottom="34dp"
+        android:src="@drawable/floating_plane"
+        android:layout_alignParentBottom="true"
+        android:layout_centerHorizontal="true" />
 
 </RelativeLayout>

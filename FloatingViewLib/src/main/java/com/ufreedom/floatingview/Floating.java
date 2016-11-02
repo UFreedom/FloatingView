@@ -4,6 +4,7 @@ import android.app.Activity;
 import android.content.Context;
 import android.graphics.Rect;
 import android.util.AttributeSet;
+import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.view.Window;
@@ -44,7 +45,7 @@ public class Floating {
         if (mSpringSystem == null){
             mSpringSystem = SpringSystem.create();
         }
-
+        
     }
     
 
@@ -61,8 +62,13 @@ public class Floating {
 
     public void startFloating(FloatingElement floatingElement) {
         
+        
         View anchorView = floatingElement.anchorView;
         View targetView = floatingElement.targetView;
+        
+        if (targetView == null){
+            targetView = LayoutInflater.from(anchorView.getContext()).inflate(floatingElement.targetViewLayoutResId,mFloatingDecorView,false);
+        }
         
         Rect rect = new Rect();
         anchorView.getGlobalVisibleRect(rect);
