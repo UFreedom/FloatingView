@@ -17,6 +17,11 @@
 <a target="_blank" href='https://github.com/UFreedom/FloatingView/blob/master/LICENSE.txt'><img src='https://img.shields.io/crates/l/rustc-serialize.svg'  /></a>
 </p>
 
+</br></br>
+
+<p align="center">
+  <img width="480" height="853" src="https://github.com/UFreedom/FloatingView/blob/master/images/demo.gif">
+</p>
 
 Links
 -----
