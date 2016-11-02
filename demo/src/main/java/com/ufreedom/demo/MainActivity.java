@@ -79,7 +79,7 @@ public class MainActivity extends AppCompatActivity {
 
                 FloatingElement floatingElement = new FloatingBuilder()
                         .anchorView(v)
-                        .target(imageView)
+                        .targetView(imageView)
                         .floatingTransition(new PlaneFloating())
                         .build();
                 floating.startFloating(floatingElement);
@@ -96,7 +96,7 @@ public class MainActivity extends AppCompatActivity {
 
                 FloatingElement floatingElement = new FloatingBuilder()
                         .anchorView(v)
-                        .target(imageView)
+                        .targetView(imageView)
                         .floatingTransition(new TranslateFloatingTransition())
                         .build();
                 floating.startFloating(floatingElement);
@@ -109,7 +109,7 @@ public class MainActivity extends AppCompatActivity {
             public void onClick(View v) {
                 FloatingElement floatingElement = new FloatingBuilder()
                         .anchorView(v)
-                        .target(R.layout.ic_like)
+                        .targetView(R.layout.ic_like)
                         .floatingTransition(new TranslateFloatingTransition())
                         .build();
                 floating.startFloating(floatingElement);

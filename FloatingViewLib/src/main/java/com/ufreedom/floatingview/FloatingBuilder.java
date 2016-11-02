@@ -42,12 +42,12 @@ public class FloatingBuilder {
         return this;
     }
     
-    public FloatingBuilder target(View view) {
+    public FloatingBuilder targetView(View view) {
         floatingElement.targetView = view;
         return this;
     }
 
-    public FloatingBuilder target(@LayoutRes int layResId) {
+    public FloatingBuilder targetView(@LayoutRes int layResId) {
         floatingElement.targetViewLayoutResId = layResId;
         return this;
     } 
