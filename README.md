@@ -20,7 +20,7 @@
 </br></br>
 
 <p align="center">
-  <img width="480" height="853" src="https://github.com/UFreedom/FloatingView/blob/master/images/demo.gif">
+  <img  src="https://github.com/UFreedom/FloatingView/blob/master/images/demo.gif">
 </p>
 
 Links
