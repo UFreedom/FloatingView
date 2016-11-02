@@ -181,39 +181,8 @@ Usage
     
                 }
             });
-            translateAnimator.addListener(new AnimatorListenerAdapter() {
-                @Override
-                public void onAnimationEnd(Animator animation) {
-                    super.onAnimationEnd(animation);
-                    yumFloating.setTranslationX(0);
-                    yumFloating.setTranslationY(0);
-                    yumFloating.setAlpha(0f);
-                }
-            });
-    
-    
-            alphaAnimator = ObjectAnimator.ofFloat(1.0f, 0f);
-            alphaAnimator.setDuration(3000);
-            alphaAnimator.addUpdateListener(new ValueAnimator.AnimatorUpdateListener() {
-                @Override
-                public void onAnimationUpdate(ValueAnimator valueAnimator) {
-                    yumFloating.setAlpha((Float) valueAnimator.getAnimatedValue());
-                }
-            });
-            
-            SpringHelper.createWidthBouncinessAndSpeed(0.0f, 1.0f,11, 15)
-                    .reboundListener(new SimpleReboundListener(){
-                        @Override
-                        public void onReboundUpdate(double currentValue) {
-                            yumFloating.setScaleX((float) currentValue);
-                            yumFloating.setScaleY((float) currentValue);
-                        }
-                    }).start(yumFloating);  
-            
-            translateAnimator.setDuration(3000);
-            translateAnimator.setStartDelay(50);
-            translateAnimator.start();
-            alphaAnimator.start();
+               
+           ...
         }
     
 }
