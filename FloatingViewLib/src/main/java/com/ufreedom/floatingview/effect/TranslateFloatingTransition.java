@@ -34,11 +34,6 @@ public class TranslateFloatingTransition implements FloatingTransition {
 
     @Override
     public void applyFloating(final YumFloating yumFloating) {
-
-        yumFloating.setTranslationY(0);
-        yumFloating.setAlpha(1f);
-        yumFloating.setScaleX(0f);
-        yumFloating.setScaleY(0f);
         
         ValueAnimator translateAnimator = ObjectAnimator.ofFloat(0, translateY);
         translateAnimator.setDuration(duration);
