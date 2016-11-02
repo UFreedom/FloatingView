@@ -48,7 +48,7 @@ Use FloatingBuilder to create a FloatingElement
 
     FloatingElement builder = new FloatingBuilder()
                             .anchorView(View)
-                            .target(View)
+                            .targetView(View)
                             .offsetX(int)
                             .offsetY(int)
                             .floatingTransition(FloatingTransition)
