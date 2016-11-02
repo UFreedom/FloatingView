@@ -19,7 +19,7 @@
 
 </br></br>
 <p align="center">
-  <img  src="https://github.com/UFreedom/FloatingView/blob/master/images/demo.gif">
+  <img  with="288"  height="512" src="https://github.com/UFreedom/FloatingView/blob/master/images/demo.gif">
 </p>
 
 
