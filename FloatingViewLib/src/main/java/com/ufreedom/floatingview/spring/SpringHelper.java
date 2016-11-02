@@ -2,7 +2,10 @@ package com.ufreedom.floatingview.spring;
 
 import com.facebook.rebound.SimpleSpringListener;
 import com.facebook.rebound.Spring;
+import com.facebook.rebound.SpringConfig;
 import com.facebook.rebound.SpringListener;
+import com.facebook.rebound.SpringSystem;
+import com.facebook.rebound.SpringUtil;
 import com.ufreedom.floatingview.transition.YumFloating;
 
 /**
@@ -64,20 +67,20 @@ public class SpringHelper {
         return this;
     }
     
-    
-    public void start(final YumFloating yumFloating){
-        if (config == -1){
-            throw new IllegalStateException("Hi , You mast call one of the method configBouncinessAndSpeed and configTensionAndFriction to make config");
-        }
-        
-        Spring spring = null;
+    public void start(){
+        SpringSystem springSystem = SpringSystem.create();
+        Spring spring  = springSystem.createSpring();
         if (config == 0){
-            spring = yumFloating.createSpringByBouncinessAndSpeed(configValueOne,configValueTwo);
+            spring.setSpringConfig(SpringConfig.fromBouncinessAndSpeed(configValueOne, configValueTwo));
         }else if (config == 1){
-            spring = yumFloating.createSpringByTensionAndFriction(configValueOne,configValueTwo);
+            spring.setSpringConfig(SpringConfig.fromOrigamiTensionAndFriction(configValueOne,configValueTwo));
         }
+        start(spring);
+    }
+    
+    private void start(Spring spring){
         if (spring != null){
-            
+
             if (springListener != null){
                 spring.addListener(springListener);
             }
@@ -91,11 +94,32 @@ public class SpringHelper {
                         }
                     }
                     if (reboundListener != null){
-                        reboundListener.onReboundUpdate(yumFloating.transition(spring.getCurrentValue(),startValue,endValue));
+                        reboundListener.onReboundUpdate(transition(spring.getCurrentValue(),startValue,endValue));
                     }
                 }
             }).setEndValue(endValue);
+        }else {
+            throw new NullPointerException("Spring should not be null");
         }
+    }
+    
+    
+    public void start(final YumFloating yumFloating){
+        if (config == -1){
+            throw new IllegalStateException("Hi , You mast call one of the method configBouncinessAndSpeed and configTensionAndFriction to make config");
+        }
+        
+        Spring spring = null;
+        if (config == 0){
+            spring = yumFloating.createSpringByBouncinessAndSpeed(configValueOne,configValueTwo);
+        }else if (config == 1){
+            spring = yumFloating.createSpringByTensionAndFriction(configValueOne,configValueTwo);
+        }
+        start(spring);
+    }
+
+    public float transition(double progress, float startValue, float endValue) {
+        return (float) SpringUtil.mapValueFromRangeToRange(progress, 0, 1, startValue, endValue);
     }
   
 }
