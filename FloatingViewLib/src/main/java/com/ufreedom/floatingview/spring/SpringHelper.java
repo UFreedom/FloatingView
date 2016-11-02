@@ -74,7 +74,7 @@ public class SpringHelper {
         if (config == 0){
             spring = yumFloating.createSpringByBouncinessAndSpeed(configValueOne,configValueTwo);
         }else if (config == 1){
-            yumFloating.createSpringByTensionAndFriction(configValueOne,configValueTwo);
+            spring = yumFloating.createSpringByTensionAndFriction(configValueOne,configValueTwo);
         }
         if (spring != null){
             
