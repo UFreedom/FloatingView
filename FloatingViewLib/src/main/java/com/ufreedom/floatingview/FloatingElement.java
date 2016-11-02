@@ -21,4 +21,6 @@ public class FloatingElement {
     public View targetView;
     
     public View anchorView;
+    
+    public int targetViewLayoutResId;
 }
