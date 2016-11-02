@@ -95,7 +95,7 @@ Customisation
 
 ####3.Floating Animation 
 
-Implementation of floating animation is very simple, you only need to implement the [FloatingTransition][4] interface
+Implementation of floating animation is very simple, you only need to implement the [FloatingTransition][4] interface.
 
 ```java
 
@@ -106,7 +106,7 @@ Implementation of floating animation is very simple, you only need to implement 
 ```
 
 
-In the `applyFloating` method, you can use Android Animation to do the animation, and then use the [YumFloating][6] to do Alpha  , Scale, Translate, Rotate and other transformations
+In the `applyFloating` method, you can use Android Animation to do the animation, and then use the [YumFloating][6] to do Alpha  , Scale, Translate, Rotate and other transformations.
 If you want to add the [Facebook Rebound][5]  animation effect, you can use the [SpringHelper][7], for example, [ScaleFloatingTransition][8]:
 
 ```java
@@ -142,11 +142,11 @@ If you want to add the [Facebook Rebound][5]  animation effect, you can use the 
 
 ```
 
-If [SpringHelper][7] can not meet your needs, you can directly use the `createSpringByBouncinessAndSpeed(double bounciness, double speed)`, or
+If [SpringHelper][7] can not meet your needs, you can directly use the `createSpringByBouncinessAndSpeed(double bounciness, double speed)` or
 `createSpringByTensionAndFriction(double tension, double friction)` to create the Spring, and then use `transition (Progress double, startValue float, endValue float)` for numerical conversion
  
 ####4.Floating Path Animation
-The floating path animation is also very simple, such as [CurveFloatingPathTransition][9], first you need to inherit from the [BaseFloatingPathTransition][10] class and [FloatingTransition][4] class inheritance. The difference is, you need to implement a `getFloatingPath (`) method.
+The floating path animation is also very simple, such as [CurveFloatingPathTransition][9], first you need to inherit from the [BaseFloatingPathTransition][10] class ,The difference is, you need to implement a `getFloatingPath (`) method.
 Use `Path` in the `getFloatingPath () `method to create the path you want to float, and then call `FloatingPath.create (path, false)` to return. For example, [CurveFloatingPathTransition][9] implementation:
 
 ```java
@@ -195,7 +195,7 @@ Use Path to describe the path you want to float, and then in `applyFloating (Yum
 * Use `getEndPathPosition () ` method to obtain the end position of the path
 * Use `getFloatingPosition(float progress)` to get the position of the current progress
 
-`getFloatingPosition(float progress)`method will return a `PathPosition` object, its properties x an y representing the current path animation x coordinates, and Y coordinates.
+`getFloatingPosition(float progress)`method will return a `PathPosition` object, its properties x an y representing the current path animation x coordinates and Y coordinates.
 
 License 
 --------
