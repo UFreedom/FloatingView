@@ -32,7 +32,7 @@ Usage
 
 ```groovy
     dependencies {
-        compile 'com.ufreedom.uikit:FloatingViewLib:1.0.0'
+        compile 'com.ufreedom.uikit:FloatingViewLib:1.0.1'
     }
 
 ```
