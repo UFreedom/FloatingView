@@ -26,7 +26,7 @@
 Links
 -----
 - [中文版 README](https://github.com/UFreedom/FloatingView/blob/master/README_CN.md)
-
+- [demo.apk](http://oeapkptbn.bkt.clouddn.com/FloatingView-demo-v1.0.1.apk)
 
 
 Usage

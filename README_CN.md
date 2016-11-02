@@ -22,6 +22,10 @@
   <img  with="288"  height="512" src="https://github.com/UFreedom/FloatingView/blob/master/images/demo.gif">
 </p>
 
+Links
+-----
+- [演示程序 apk](http://oeapkptbn.bkt.clouddn.com/FloatingView-demo-v1.0.1.apk)
+
 
 Usage
 -----
