@@ -9,6 +9,9 @@ import com.facebook.rebound.SpringUtil;
 import com.ufreedom.floatingview.transition.YumFloating;
 
 /**
+ * 
+ * A help class for using Facebook Rebound
+ * 
  * Author UFreedom
  * Date : 2016 十月 20
  */
