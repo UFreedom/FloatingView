@@ -8,6 +8,9 @@ import com.ufreedom.floatingview.transition.FloatingTransition;
 
 
 /**
+ * 
+ * Helped class for building {@link FloatingElement}
+ * 
  * Author UFreedom
  * Date : 2016 十月 19
  */
