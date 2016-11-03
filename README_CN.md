@@ -24,6 +24,7 @@
 
 Links
 -----
+- [FloatingView 介绍博客](http://www.jianshu.com/p/6aaa258d77f1)
 - [演示程序 apk](http://oeapkptbn.bkt.clouddn.com/FloatingView-demo-v1.0.1.apk)
 
 

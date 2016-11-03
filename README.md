@@ -26,6 +26,7 @@
 Links
 -----
 - [中文版 README](https://github.com/UFreedom/FloatingView/blob/master/README_CN.md)
+- [Blog about FloatingView](http://www.jianshu.com/p/6aaa258d77f1)
 - [demo.apk](http://oeapkptbn.bkt.clouddn.com/FloatingView-demo-v1.0.1.apk)
 
 
