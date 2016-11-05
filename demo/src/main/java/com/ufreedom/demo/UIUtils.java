@@ -7,6 +7,7 @@ import android.util.TypedValue;
 import android.view.WindowManager;
 
 /**
+ * Utils for UI
  * Author UFreedom
  * Date : 2016 十月 28
  */
