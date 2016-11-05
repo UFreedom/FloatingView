@@ -1,0 +1,4 @@
+<resources>
+    <dimen name="status_bar_height">24dp</dimen>
+    <dimen name="tool_bar_height">80dp</dimen>
+</resources>

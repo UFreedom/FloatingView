@@ -1,11 +1,11 @@
-package com.ufreedom.floatingview;
+package com.ufreedom.floatingview.transition;
 
 /**
  * Author UFreedom
  * Date : 2016 十月 18
  */
 
-public interface IFloating {
+public interface ITransition {
 
 
     public void setAlpha(float alpha);

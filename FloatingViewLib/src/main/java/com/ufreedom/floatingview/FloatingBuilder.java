@@ -1,5 +1,6 @@
 package com.ufreedom.floatingview;
 
+import android.support.annotation.LayoutRes;
 import android.view.View;
 
 import com.ufreedom.floatingview.effect.ScaleFloatingTransition;
@@ -7,6 +8,9 @@ import com.ufreedom.floatingview.transition.FloatingTransition;
 
 
 /**
+ * 
+ * Helped class for building {@link FloatingElement}
+ * 
  * Author UFreedom
  * Date : 2016 十月 19
  */
@@ -16,6 +20,7 @@ public class FloatingBuilder {
 
     public FloatingBuilder() {
         floatingElement = new FloatingElement();
+        floatingElement.targetViewLayoutResId = -1;
     }
     
     public FloatingBuilder offsetX(int offsetX) {
@@ -40,14 +45,19 @@ public class FloatingBuilder {
         return this;
     }
     
-    public FloatingBuilder target(View view) {
+    public FloatingBuilder targetView(View view) {
         floatingElement.targetView = view;
         return this;
     }
 
+    public FloatingBuilder targetView(@LayoutRes int layResId) {
+        floatingElement.targetViewLayoutResId = layResId;
+        return this;
+    } 
+
     public FloatingElement build() {
 
-        if (floatingElement.targetView == null) {
+        if (floatingElement.targetView == null && floatingElement.targetViewLayoutResId == -1) {
             throw new NullPointerException("TargetView should not be null");
         }
         
