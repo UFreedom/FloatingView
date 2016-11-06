@@ -152,7 +152,7 @@ public class MainActivity extends AppCompatActivity {
                         .floatingTransition(new StarFloating())
                         .build();
                 
-                SpringHelper.createWidthBouncinessAndSpeed(0f,1f,11,15).reboundListener(new ReboundListener() {
+                SpringHelper.createWithBouncinessAndSpeed(0f,1f,11,15).reboundListener(new ReboundListener() {
                     @Override
                     public void onReboundUpdate(double currentValue) {
                         v.setScaleX((float) currentValue);
@@ -226,7 +226,7 @@ public class MainActivity extends AppCompatActivity {
             });
             
 
-            SpringHelper.createWidthBouncinessAndSpeed(0.0f, 1.0f, 14, 15)
+            SpringHelper.createWithBouncinessAndSpeed(0.0f, 1.0f, 14, 15)
                     .reboundListener(new SimpleReboundListener() {
                         @Override
                         public void onReboundUpdate(double currentValue) {
@@ -244,7 +244,7 @@ public class MainActivity extends AppCompatActivity {
 
         @Override
         public void applyFloating(final YumFloating yumFloating) {
-            SpringHelper.createWidthBouncinessAndSpeed(0.0f, 1.0f,10, 15)
+            SpringHelper.createWithBouncinessAndSpeed(0.0f, 1.0f,10, 15)
                     .reboundListener(new SimpleReboundListener(){
                         @Override
                         public void onReboundUpdate(double currentValue) {

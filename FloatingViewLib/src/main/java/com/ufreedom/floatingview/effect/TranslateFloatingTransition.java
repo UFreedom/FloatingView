@@ -63,7 +63,7 @@ public class TranslateFloatingTransition implements FloatingTransition {
             }
         });
         
-        SpringHelper.createWidthBouncinessAndSpeed(0.0f, 1.0f,10, 15)
+        SpringHelper.createWithBouncinessAndSpeed(0.0f, 1.0f,10, 15)
                 .reboundListener(new SimpleReboundListener(){
                     @Override
                     public void onReboundUpdate(double currentValue) {

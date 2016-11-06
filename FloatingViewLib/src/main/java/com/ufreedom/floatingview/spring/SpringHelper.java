@@ -35,12 +35,12 @@ public class SpringHelper {
         return new SpringHelper(startValue,endValue);
     }
 
-    public static  SpringHelper createWidthBouncinessAndSpeed(float startValue, float endValue,double bounciness, double speed){
+    public static  SpringHelper createWithBouncinessAndSpeed(float startValue, float endValue, double bounciness, double speed){
         SpringHelper springHelper = new SpringHelper(startValue,endValue);
         return springHelper.configBouncinessAndSpeed(bounciness,speed);
     }
 
-    public static SpringHelper createWidthTensionAndFriction(float startValue, float endValue,double tension, double friction){
+    public static SpringHelper createWithTensionAndFriction(float startValue, float endValue, double tension, double friction){
         SpringHelper springHelper = new SpringHelper(startValue,endValue);
         return springHelper.configTensionAndFriction(tension,friction);
     }
