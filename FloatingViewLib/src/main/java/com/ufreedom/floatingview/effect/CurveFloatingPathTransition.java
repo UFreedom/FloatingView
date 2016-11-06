@@ -78,7 +78,7 @@ public class CurveFloatingPathTransition extends BaseFloatingPathTransition {
             }
         });
         
-        SpringHelper.createWidthBouncinessAndSpeed(0.0f, 1.0f,11, 15)
+        SpringHelper.createWithBouncinessAndSpeed(0.0f, 1.0f,11, 15)
                 .reboundListener(new SimpleReboundListener(){
                     @Override
                     public void onReboundUpdate(double currentValue) {
