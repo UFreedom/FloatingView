@@ -128,7 +128,7 @@ If you want to add the [Facebook Rebound][5]  animation effect, you can use the 
         });
         alphaAnimator.start();
 
-        SpringHelper.createWidthBouncinessAndSpeed(0.0f, 1.0f,bounciness, speed)
+        SpringHelper.createWithBouncinessAndSpeed(0.0f, 1.0f,bounciness, speed)
                 .reboundListener(new SimpleReboundListener(){
                     @Override
                     public void onReboundUpdate(double currentValue) {
