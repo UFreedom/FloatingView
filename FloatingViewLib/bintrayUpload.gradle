@@ -4,7 +4,7 @@ apply plugin: 'com.jfrog.bintray'
 def siteUrl = 'https://github.com/UFreedom/FloatingView'
 def gitUrl = 'git@github.com:UFreedom/FloatingView.git'
 group = "com.ufreedom.uikit"
-version = "1.0.1"
+version = "1.0.2"
 
 
 install {

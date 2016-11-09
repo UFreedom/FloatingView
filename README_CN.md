@@ -38,7 +38,7 @@ Usage
 
 ```groovy
     dependencies {
-        compile 'com.ufreedom.uikit:FloatingViewLib:1.0.1'
+        compile 'com.ufreedom.uikit:FloatingViewLib:1.0.2'
     }
 
 ```
@@ -197,6 +197,19 @@ Usage
 * 使用 `getFloatingPosition(float progress)` 获取当前进度的位置
 
 `getFloatingPosition(float progress)` 方法会返回一个 `PathPosition` 对象，其属性 x,y 分别代表当前路径动画的 x 坐标，和 y 坐标. 
+ 
+ 
+ Release Log
+-----------
+ 
+ 
+ #### v1.0.2
+ [修复 bug](https://github.com/UFreedom/FloatingView/pull/6)
+ 
+ 
+ #### v1.0.1
+ 初始版本
+ 
  
  
 License 

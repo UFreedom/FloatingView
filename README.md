@@ -41,7 +41,7 @@ Add dependencies in build.gradle.
 
 ```groovy
     dependencies {
-        compile 'com.ufreedom.uikit:FloatingViewLib:1.0.1'
+        compile 'com.ufreedom.uikit:FloatingViewLib:1.0.2'
     }
 
 ```
@@ -199,6 +199,22 @@ Use Path to describe the path you want to float, and then in `applyFloating (Yum
 * Use `getFloatingPosition(float progress)` to get the position of the current progress
 
 `getFloatingPosition(float progress)`method will return a `PathPosition` object, its properties x an y representing the current path animation x coordinates and Y coordinates.
+
+
+
+Release Log
+-----------
+
+
+#### v1.0.2
+[Fix bug](https://github.com/UFreedom/FloatingView/pull/6)
+
+
+#### v1.0.1
+First Version
+
+
+
 
 License 
 --------
