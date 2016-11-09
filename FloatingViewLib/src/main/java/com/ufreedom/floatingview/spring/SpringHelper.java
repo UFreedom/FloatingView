@@ -22,7 +22,7 @@ public class SpringHelper {
     private float endValue;
     private double configValueOne;
     private double configValueTwo;
-    private int config;
+    private int config = -1;
     private ReboundListener reboundListener;
     private SpringListener springListener;
 
@@ -109,7 +109,7 @@ public class SpringHelper {
     
     public void start(final YumFloating yumFloating){
         if (config == -1){
-            throw new IllegalStateException("Hi , You mast call one of the method configBouncinessAndSpeed and configTensionAndFriction to make config");
+            throw new IllegalStateException("Hi , You must call one of the method configBouncinessAndSpeed and configTensionAndFriction to make config");
         }
         
         Spring spring = null;
