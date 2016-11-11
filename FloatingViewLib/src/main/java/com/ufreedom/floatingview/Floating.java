@@ -79,7 +79,6 @@ public class Floating {
 
     public void startFloating(FloatingElement floatingElement) {
         
-        
         View anchorView = floatingElement.anchorView;
         View targetView = floatingElement.targetView;
         

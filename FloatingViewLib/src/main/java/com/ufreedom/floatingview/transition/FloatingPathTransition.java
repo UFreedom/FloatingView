@@ -26,5 +26,4 @@ public interface  FloatingPathTransition extends FloatingTransition {
 
     public FloatingPath getFloatingPath();
     
-   
 }
