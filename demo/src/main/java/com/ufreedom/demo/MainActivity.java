@@ -31,33 +31,33 @@ import com.ufreedom.floatingview.transition.YumFloating;
 
 public class MainActivity extends AppCompatActivity {
 
-    private Floating floating;
-    private View icPlaneView;
-    private View icPaperAirPlaneView;
-    private int screenWidth;
-    private int screenHeight;
+    private Floating mFloating;
+    private View mIcPlaneView;
+    private View mIcPaperAirPlaneView;
+    private int mScreenWidth;
+    private int mScreenHeight;
 
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
-        floating = new Floating(this);
+        mFloating = new Floating(this);
 
         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.KITKAT) {
             WindowManager.LayoutParams localLayoutParams = getWindow().getAttributes();
             localLayoutParams.flags = (WindowManager.LayoutParams.FLAG_TRANSLUCENT_STATUS | localLayoutParams.flags);
         }
 
-        screenWidth = UIUtils.getScreenWidth(this);
-        screenHeight = UIUtils.getScreenWidth(this);
+        mScreenWidth = UIUtils.getScreenWidth(this);
+        mScreenHeight = UIUtils.getScreenWidth(this);
         initLayout();
     }
 
     private void initLayout() {
         
         int margin = UIUtils.dip2px(this,15);
-        int w = screenWidth - margin * 2;
+        int w = mScreenWidth - margin * 2;
         int h = (int) (w * 0.53f);
         
         RelativeLayout bikeRootView = (RelativeLayout) findViewById(R.id.itemBikeContainerView);
@@ -70,13 +70,13 @@ public class MainActivity extends AppCompatActivity {
         clockRootViewLayoutParams.width = w;
         clockRootViewLayoutParams.height = h;
         
-        icPlaneView = findViewById(R.id.icPlane);
-        icPlaneView.setOnClickListener(new View.OnClickListener() {
+        mIcPlaneView = findViewById(R.id.icPlane);
+        mIcPlaneView.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
 
                 ImageView imageView = new ImageView(MainActivity.this);
-                imageView.setLayoutParams(new ViewGroup.LayoutParams(icPlaneView.getMeasuredWidth(), icPlaneView.getMeasuredHeight()));
+                imageView.setLayoutParams(new ViewGroup.LayoutParams(mIcPlaneView.getMeasuredWidth(), mIcPlaneView.getMeasuredHeight()));
                 imageView.setImageResource(R.drawable.floating_plane);
 
                 FloatingElement floatingElement = new FloatingBuilder()
@@ -84,16 +84,16 @@ public class MainActivity extends AppCompatActivity {
                         .targetView(imageView)
                         .floatingTransition(new PlaneFloating())
                         .build();
-                floating.startFloating(floatingElement);
+                mFloating.startFloating(floatingElement);
             }
         });
 
-        icPaperAirPlaneView = findViewById(R.id.icPaperAirPlane);
-        icPaperAirPlaneView.setOnClickListener(new View.OnClickListener() {
+        mIcPaperAirPlaneView = findViewById(R.id.icPaperAirPlane);
+        mIcPaperAirPlaneView.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 ImageView imageView = new ImageView(MainActivity.this);
-                imageView.setLayoutParams(new ViewGroup.LayoutParams(icPaperAirPlaneView.getMeasuredWidth(), icPaperAirPlaneView.getMeasuredHeight()));
+                imageView.setLayoutParams(new ViewGroup.LayoutParams(mIcPaperAirPlaneView.getMeasuredWidth(), mIcPaperAirPlaneView.getMeasuredHeight()));
                 imageView.setImageResource(R.drawable.paper_airplane);
 
                 FloatingElement floatingElement = new FloatingBuilder()
@@ -101,7 +101,7 @@ public class MainActivity extends AppCompatActivity {
                         .targetView(imageView)
                         .floatingTransition(new TranslateFloatingTransition())
                         .build();
-                floating.startFloating(floatingElement);
+                mFloating.startFloating(floatingElement);
             }
         });
         
@@ -118,7 +118,7 @@ public class MainActivity extends AppCompatActivity {
                         .offsetY(-v.getMeasuredHeight())
                         .floatingTransition(new ScaleFloatingTransition())
                         .build();
-                floating.startFloating(floatingElement);
+                mFloating.startFloating(floatingElement);
             }
         });
         
@@ -131,7 +131,7 @@ public class MainActivity extends AppCompatActivity {
                         .targetView(R.layout.ic_like)
                         .floatingTransition(new TranslateFloatingTransition())
                         .build();
-                floating.startFloating(floatingElement);
+                mFloating.startFloating(floatingElement);
                 
             }
         });
@@ -161,7 +161,7 @@ public class MainActivity extends AppCompatActivity {
 
                     @Override
                     public void onReboundEnd() {
-                        floating.startFloating(floatingElement);
+                        mFloating.startFloating(floatingElement);
                     }
                 }).start();
                 
@@ -184,7 +184,7 @@ public class MainActivity extends AppCompatActivity {
                         .targetView(imageView)
                         .floatingTransition(new BeerFloating())
                         .build();
-                floating.startFloating(floatingElement);
+                mFloating.startFloating(floatingElement);
             }
         });
     }
@@ -196,7 +196,7 @@ public class MainActivity extends AppCompatActivity {
             Path path = new Path();
             path.moveTo(0, 0);
             path.quadTo(100, -300, 0, -600);
-            path.rLineTo(0, -screenHeight - 300);
+            path.rLineTo(0, -mScreenHeight - 300);
             return FloatingPath.create(path, false);
         }
 

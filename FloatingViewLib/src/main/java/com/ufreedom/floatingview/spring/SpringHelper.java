@@ -35,17 +35,17 @@ import com.ufreedom.floatingview.transition.YumFloating;
 
 public class SpringHelper {
     
-    private float startValue;
-    private float endValue;
-    private double configValueOne;
-    private double configValueTwo;
-    private int config = -1;
-    private ReboundListener reboundListener;
-    private SpringListener springListener;
+    private float mStartValue;
+    private float mEndValue;
+    private double mConfigValueOne;
+    private double mConfigValueTwo;
+    private int mConfig = -1;
+    private ReboundListener mReboundListener;
+    private SpringListener mSpringListener;
 
     private SpringHelper(float startValue, float endValue) {
-        this.startValue = startValue;
-        this.endValue = endValue;
+        this.mStartValue = startValue;
+        this.mEndValue = endValue;
     }
 
     public static SpringHelper create(float startValue, float endValue){
@@ -64,36 +64,36 @@ public class SpringHelper {
     
     
     public SpringHelper configBouncinessAndSpeed(double bounciness, double speed){
-        configValueOne = bounciness;
-        configValueTwo = speed;
-        config = 0;
+        mConfigValueOne = bounciness;
+        mConfigValueTwo = speed;
+        mConfig = 0;
         return this;
     }
     
     public SpringHelper configTensionAndFriction(double tension, double friction){
-        configValueOne = tension;
-        configValueTwo = friction;
-        config = 1;
+        mConfigValueOne = tension;
+        mConfigValueTwo = friction;
+        mConfig = 1;
         return this;
     }
     
     public SpringHelper reboundListener(ReboundListener reboundListener){
-        this.reboundListener = reboundListener;
+        this.mReboundListener = reboundListener;
         return this;
     }
     
     public SpringHelper springListener(SpringListener springListener){
-        this.springListener = springListener;
+        this.mSpringListener = springListener;
         return this;
     }
     
     public void start(){
         SpringSystem springSystem = SpringSystem.create();
         Spring spring  = springSystem.createSpring();
-        if (config == 0){
-            spring.setSpringConfig(SpringConfig.fromBouncinessAndSpeed(configValueOne, configValueTwo));
-        }else if (config == 1){
-            spring.setSpringConfig(SpringConfig.fromOrigamiTensionAndFriction(configValueOne,configValueTwo));
+        if (mConfig == 0){
+            spring.setSpringConfig(SpringConfig.fromBouncinessAndSpeed(mConfigValueOne, mConfigValueTwo));
+        }else if (mConfig == 1){
+            spring.setSpringConfig(SpringConfig.fromOrigamiTensionAndFriction(mConfigValueOne, mConfigValueTwo));
         }
         start(spring);
     }
@@ -101,23 +101,23 @@ public class SpringHelper {
     private void start(Spring spring){
         if (spring != null){
 
-            if (springListener != null){
-                spring.addListener(springListener);
+            if (mSpringListener != null){
+                spring.addListener(mSpringListener);
             }
             
             spring.addListener(new SimpleSpringListener(){
                 @Override
                 public void onSpringUpdate(Spring spring) {
                     if (spring.getCurrentValue() == spring.getEndValue()){
-                        if (reboundListener != null){
-                            reboundListener.onReboundEnd();
+                        if (mReboundListener != null){
+                            mReboundListener.onReboundEnd();
                         }
                     }
-                    if (reboundListener != null){
-                        reboundListener.onReboundUpdate(transition(spring.getCurrentValue(),startValue,endValue));
+                    if (mReboundListener != null){
+                        mReboundListener.onReboundUpdate(transition(spring.getCurrentValue(), mStartValue, mEndValue));
                     }
                 }
-            }).setEndValue(endValue);
+            }).setEndValue(mEndValue);
         }else {
             throw new NullPointerException("Spring should not be null");
         }
@@ -125,15 +125,15 @@ public class SpringHelper {
     
     
     public void start(final YumFloating yumFloating){
-        if (config == -1){
-            throw new IllegalStateException("Hi , You must call one of the method configBouncinessAndSpeed and configTensionAndFriction to make config");
+        if (mConfig == -1){
+            throw new IllegalStateException("Hi , You must call one of the method configBouncinessAndSpeed and configTensionAndFriction to make mConfig");
         }
         
         Spring spring = null;
-        if (config == 0){
-            spring = yumFloating.createSpringByBouncinessAndSpeed(configValueOne,configValueTwo);
-        }else if (config == 1){
-            spring = yumFloating.createSpringByTensionAndFriction(configValueOne,configValueTwo);
+        if (mConfig == 0){
+            spring = yumFloating.createSpringByBouncinessAndSpeed(mConfigValueOne, mConfigValueTwo);
+        }else if (mConfig == 1){
+            spring = yumFloating.createSpringByTensionAndFriction(mConfigValueOne, mConfigValueTwo);
         }
         start(spring);
     }

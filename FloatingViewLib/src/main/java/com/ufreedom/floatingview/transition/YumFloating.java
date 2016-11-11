@@ -35,22 +35,22 @@ import java.lang.ref.WeakReference;
 
 public class YumFloating implements ITransition, Rebound {
 
-    private SpringSystem springSystem;
-    private WeakReference<View> targetViewWeakReference;
+    private SpringSystem mSpringSystem;
+    private WeakReference<View> mTargetViewWeakReference;
     
     public YumFloating(View targetView, SpringSystem springSystem) {
-        targetViewWeakReference = new WeakReference<View>(targetView);
-        this.springSystem = springSystem;
+        mTargetViewWeakReference = new WeakReference<View>(targetView);
+        this.mSpringSystem = springSystem;
     }
 
 
     public YumFloating(View targetView) {
-        targetViewWeakReference = new WeakReference<View>(targetView);
+        mTargetViewWeakReference = new WeakReference<View>(targetView);
 
     }
 
     public View getTargetView() {
-        return targetViewWeakReference.get();
+        return mTargetViewWeakReference.get();
     }
 
     @Override
@@ -153,13 +153,13 @@ public class YumFloating implements ITransition, Rebound {
 
     @Override
     public Spring createSpringByBouncinessAndSpeed(double bounciness, double speed) {
-        return springSystem.createSpring()
+        return mSpringSystem.createSpring()
                 .setSpringConfig(SpringConfig.fromBouncinessAndSpeed(bounciness, speed));
     }
 
     @Override
     public Spring createSpringByTensionAndFriction(double tension, double friction) {
-        return springSystem.createSpring()
+        return mSpringSystem.createSpring()
                 .setSpringConfig(SpringConfig.fromOrigamiTensionAndFriction(tension, friction));
     }
 
@@ -176,7 +176,7 @@ public class YumFloating implements ITransition, Rebound {
             if (viewParent instanceof ViewGroup){
                 ViewGroup parent = (ViewGroup) viewParent;
                 parent.removeView(view);
-                targetViewWeakReference.clear();
+                mTargetViewWeakReference.clear();
             }
         }
     }

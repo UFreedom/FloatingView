@@ -33,59 +33,59 @@ import com.ufreedom.floatingview.transition.FloatingTransition;
  */
 public class FloatingBuilder {
     
-    private FloatingElement floatingElement;
+    private FloatingElement mFloatingElement;
 
     public FloatingBuilder() {
-        floatingElement = new FloatingElement();
-        floatingElement.targetViewLayoutResId = -1;
+        mFloatingElement = new FloatingElement();
+        mFloatingElement.targetViewLayoutResId = -1;
     }
     
     public FloatingBuilder offsetX(int offsetX) {
-        floatingElement.offsetX = offsetX;
+        mFloatingElement.offsetX = offsetX;
         return this;
     }
     
     public FloatingBuilder offsetY(int offsetY) {
-        floatingElement.offsetY = offsetY;
+        mFloatingElement.offsetY = offsetY;
         return this;
     }
   
 
     public FloatingBuilder floatingTransition(FloatingTransition floatingTransition) {
-        floatingElement.floatingTransition = floatingTransition;
+        mFloatingElement.floatingTransition = floatingTransition;
         return  this;
     }
     
     
     public FloatingBuilder anchorView(View view){
-        floatingElement.anchorView = view;
+        mFloatingElement.anchorView = view;
         return this;
     }
     
     public FloatingBuilder targetView(View view) {
-        floatingElement.targetView = view;
+        mFloatingElement.targetView = view;
         return this;
     }
 
     public FloatingBuilder targetView(@LayoutRes int layResId) {
-        floatingElement.targetViewLayoutResId = layResId;
+        mFloatingElement.targetViewLayoutResId = layResId;
         return this;
     } 
 
     public FloatingElement build() {
 
-        if (floatingElement.targetView == null && floatingElement.targetViewLayoutResId == -1) {
+        if (mFloatingElement.targetView == null && mFloatingElement.targetViewLayoutResId == -1) {
             throw new NullPointerException("TargetView should not be null");
         }
         
-        if (floatingElement.anchorView == null){
+        if (mFloatingElement.anchorView == null){
             throw new NullPointerException("AnchorView should not be null");
         }
 
-        if (floatingElement.floatingTransition == null) {
-            floatingElement.floatingTransition = new ScaleFloatingTransition();
+        if (mFloatingElement.floatingTransition == null) {
+            mFloatingElement.floatingTransition = new ScaleFloatingTransition();
         }
-        return floatingElement;
+        return mFloatingElement;
     }
 
 }

@@ -33,33 +33,33 @@ import com.ufreedom.floatingview.spring.SpringHelper;
 
 public class ScaleFloatingTransition implements FloatingTransition {
 
-    private long duration;
-    private double bounciness;
-    private double speed;
+    private long mDuration;
+    private double mBounciness;
+    private double mSpeed;
 
     public ScaleFloatingTransition() {
-        duration = 1000;
-        bounciness = 10;
-        speed = 15;
+        mDuration = 1000;
+        mBounciness = 10;
+        mSpeed = 15;
     }
 
     public ScaleFloatingTransition(long duration) {
-        this.duration = duration;
-        bounciness = 10;
-        speed = 15;
+        this.mDuration = duration;
+        mBounciness = 10;
+        mSpeed = 15;
     }
 
     public ScaleFloatingTransition(long duration, double bounciness, double speed) {
-        this.duration = duration;
-        this.bounciness = bounciness;
-        this.speed = speed;
+        this.mDuration = duration;
+        this.mBounciness = bounciness;
+        this.mSpeed = speed;
     }
 
     @Override
     public void applyFloating(final YumFloating yumFloating) {
         
         ValueAnimator alphaAnimator = ObjectAnimator.ofFloat(1.0f, 0.0f);
-        alphaAnimator.setDuration(duration);
+        alphaAnimator.setDuration(mDuration);
         alphaAnimator.addUpdateListener(new ValueAnimator.AnimatorUpdateListener() {
             @Override
             public void onAnimationUpdate(ValueAnimator valueAnimator) {
@@ -68,7 +68,7 @@ public class ScaleFloatingTransition implements FloatingTransition {
         });
         alphaAnimator.start();
 
-        SpringHelper.createWithBouncinessAndSpeed(0.0f, 1.0f,bounciness, speed)
+        SpringHelper.createWithBouncinessAndSpeed(0.0f, 1.0f, mBounciness, mSpeed)
                 .reboundListener(new SimpleReboundListener(){
                     @Override
                     public void onReboundUpdate(double currentValue) {

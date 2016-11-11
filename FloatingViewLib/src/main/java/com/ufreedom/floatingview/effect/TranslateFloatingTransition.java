@@ -35,25 +35,25 @@ import com.ufreedom.floatingview.spring.SpringHelper;
 
 public class TranslateFloatingTransition implements FloatingTransition {
 
-    private float translateY;
-    private long duration;
+    private float mTranslateY;
+    private long mDuration;
 
     public TranslateFloatingTransition() {
-        translateY = -200f;
-        duration = 1500;
+        mTranslateY = -200f;
+        mDuration = 1500;
     }
 
 
     public TranslateFloatingTransition(float translateY, long duration) {
-        this.translateY = translateY;
-        this.duration = duration;
+        this.mTranslateY = translateY;
+        this.mDuration = duration;
     }
 
     @Override
     public void applyFloating(final YumFloating yumFloating) {
         
-        ValueAnimator translateAnimator = ObjectAnimator.ofFloat(0, translateY);
-        translateAnimator.setDuration(duration);
+        ValueAnimator translateAnimator = ObjectAnimator.ofFloat(0, mTranslateY);
+        translateAnimator.setDuration(mDuration);
         translateAnimator.setStartDelay(50);
         translateAnimator.addUpdateListener(new ValueAnimator.AnimatorUpdateListener() {
             @Override
@@ -72,7 +72,7 @@ public class TranslateFloatingTransition implements FloatingTransition {
         });
         
         ValueAnimator alphaAnimator = ObjectAnimator.ofFloat(1.0f, 0.0f);
-        alphaAnimator.setDuration(duration);
+        alphaAnimator.setDuration(mDuration);
         alphaAnimator.addUpdateListener(new ValueAnimator.AnimatorUpdateListener() {
             @Override
             public void onAnimationUpdate(ValueAnimator valueAnimator) {

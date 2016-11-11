@@ -24,8 +24,8 @@ package com.ufreedom.floatingview.transition;
 
 public abstract  class BaseFloatingPathTransition  implements FloatingPathTransition {
 
-    private PathPosition pathPosition;
-    private float [] pathPositionGetter;
+    private PathPosition mPathPosition;
+    private float [] mPathPositionGetter;
     
     public float getStartPathPosition(){
         return 0;
@@ -39,18 +39,18 @@ public abstract  class BaseFloatingPathTransition  implements FloatingPathTransi
     }
     
     public PathPosition getFloatingPosition(float progress) {
-        if (pathPosition == null){
-            pathPosition = new PathPosition();
+        if (mPathPosition == null){
+            mPathPosition = new PathPosition();
         }
-        if (pathPositionGetter == null){
-            pathPositionGetter = new float[2];
+        if (mPathPositionGetter == null){
+            mPathPositionGetter = new float[2];
         }
         if (getFloatingPath() != null){
-            getFloatingPath() .getPathMeasure().getPosTan(progress, pathPositionGetter, null);
-            pathPosition.x = pathPositionGetter[0];
-            pathPosition.y = pathPositionGetter[1];
+            getFloatingPath() .getPathMeasure().getPosTan(progress, mPathPositionGetter, null);
+            mPathPosition.x = mPathPositionGetter[0];
+            mPathPosition.y = mPathPositionGetter[1];
         }
-        return pathPosition;
+        return mPathPosition;
     }
     
     
