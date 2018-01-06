@@ -23,9 +23,9 @@ package com.ufreedom.floatingview.spring;
  */
 
 public interface ReboundListener {
-    
-    public void onReboundUpdate(double currentValue);
 
-    public void onReboundEnd();
-    
+    void onReboundUpdate(double currentValue);
+
+    void onReboundEnd();
+
 }

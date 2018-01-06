@@ -55,21 +55,21 @@ public class MainActivity extends AppCompatActivity {
     }
 
     private void initLayout() {
-        
-        int margin = UIUtils.dip2px(this,15);
+
+        int margin = UIUtils.dip2px(this, 15);
         int w = mScreenWidth - margin * 2;
         int h = (int) (w * 0.53f);
-        
-        RelativeLayout bikeRootView = (RelativeLayout) findViewById(R.id.itemBikeContainerView);
+
+        RelativeLayout bikeRootView = findViewById(R.id.itemBikeContainerView);
         RelativeLayout.LayoutParams layoutParams = (RelativeLayout.LayoutParams) bikeRootView.getLayoutParams();
         layoutParams.width = w;
         layoutParams.height = h;
-        
-        RelativeLayout clockRootView = (RelativeLayout) findViewById(R.id.itemClockContainerView);
+
+        RelativeLayout clockRootView = findViewById(R.id.itemClockContainerView);
         RelativeLayout.LayoutParams clockRootViewLayoutParams = (RelativeLayout.LayoutParams) clockRootView.getLayoutParams();
         clockRootViewLayoutParams.width = w;
         clockRootViewLayoutParams.height = h;
-        
+
         mIcPlaneView = findViewById(R.id.icPlane);
         mIcPlaneView.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -104,7 +104,7 @@ public class MainActivity extends AppCompatActivity {
                 mFloating.startFloating(floatingElement);
             }
         });
-        
+
         View icCommandLineView = findViewById(R.id.icCommandLine);
         icCommandLineView.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -121,7 +121,7 @@ public class MainActivity extends AppCompatActivity {
                 mFloating.startFloating(floatingElement);
             }
         });
-        
+
         View icLikeView = findViewById(R.id.icLike);
         icLikeView.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -132,12 +132,12 @@ public class MainActivity extends AppCompatActivity {
                         .floatingTransition(new TranslateFloatingTransition())
                         .build();
                 mFloating.startFloating(floatingElement);
-                
+
             }
         });
-        
-        
-        final View icStarView  = findViewById(R.id.icStar);
+
+
+        final View icStarView = findViewById(R.id.icStar);
         icStarView.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(final View v) {
@@ -151,8 +151,8 @@ public class MainActivity extends AppCompatActivity {
                         .targetView(imageView)
                         .floatingTransition(new StarFloating())
                         .build();
-                
-                SpringHelper.createWithBouncinessAndSpeed(0f,1f,11,15).reboundListener(new ReboundListener() {
+
+                SpringHelper.createWithBouncinessAndSpeed(0f, 1f, 11, 15).reboundListener(new ReboundListener() {
                     @Override
                     public void onReboundUpdate(double currentValue) {
                         v.setScaleX((float) currentValue);
@@ -164,14 +164,13 @@ public class MainActivity extends AppCompatActivity {
                         mFloating.startFloating(floatingElement);
                     }
                 }).start();
-                
-                
-                
+
+
             }
         });
-        
-        
-        final View icBeerView  = findViewById(R.id.icBeer);
+
+
+        final View icBeerView = findViewById(R.id.icBeer);
         icBeerView.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -202,7 +201,7 @@ public class MainActivity extends AppCompatActivity {
 
         @Override
         public void applyFloating(final YumFloating yumFloating) {
-            
+
             ValueAnimator translateAnimator = ObjectAnimator.ofFloat(getStartPathPosition(), getEndPathPosition());
             translateAnimator.addUpdateListener(new ValueAnimator.AnimatorUpdateListener() {
                 @Override
@@ -224,7 +223,7 @@ public class MainActivity extends AppCompatActivity {
                     yumFloating.clear();
                 }
             });
-            
+
 
             SpringHelper.createWithBouncinessAndSpeed(0.0f, 1.0f, 14, 15)
                     .reboundListener(new SimpleReboundListener() {
@@ -239,13 +238,13 @@ public class MainActivity extends AppCompatActivity {
             translateAnimator.start();
         }
     }
-    
+
     class StarFloating implements FloatingTransition {
 
         @Override
         public void applyFloating(final YumFloating yumFloating) {
-            SpringHelper.createWithBouncinessAndSpeed(0.0f, 1.0f,10, 15)
-                    .reboundListener(new SimpleReboundListener(){
+            SpringHelper.createWithBouncinessAndSpeed(0.0f, 1.0f, 10, 15)
+                    .reboundListener(new SimpleReboundListener() {
                         @Override
                         public void onReboundUpdate(double currentValue) {
                             yumFloating.setScaleX((float) currentValue);
@@ -285,17 +284,17 @@ public class MainActivity extends AppCompatActivity {
             translateAnimator.start();
         }
     }
-    
-    
-    class BeerFloating extends BaseFloatingPathTransition{
 
-        
+
+    class BeerFloating extends BaseFloatingPathTransition {
+
+
         @Override
         public FloatingPath getFloatingPath() {
             Path path = new Path();
-            path.rLineTo(-100,0);
-            path.quadTo(0,-200,100,0);
-            path.quadTo(0,200,-100,0);
+            path.rLineTo(-100, 0);
+            path.quadTo(0, -200, 100, 0);
+            path.quadTo(0, 200, -100, 0);
             return FloatingPath.create(path, false);
         }
 
@@ -313,9 +312,9 @@ public class MainActivity extends AppCompatActivity {
 
                 }
             });
-           
 
-            ValueAnimator alphaAnimation = ObjectAnimator.ofFloat(1f,0f);
+
+            ValueAnimator alphaAnimation = ObjectAnimator.ofFloat(1f, 0f);
             alphaAnimation.addUpdateListener(new ValueAnimator.AnimatorUpdateListener() {
                 @Override
                 public void onAnimationUpdate(ValueAnimator animation) {

@@ -22,17 +22,16 @@ import android.view.View;
 import com.ufreedom.floatingview.transition.FloatingTransition;
 
 /**
- * 
  * Data structure for a floating element.
- * 
- * 
+ * <p>
+ * <p>
  * Author UFreedom
  * Date : 2016 十月 19
  */
 
 public class FloatingElement {
 
-    
+
     /**
      * Floating effect, the default is ScaleFloatingTransition
      */
@@ -65,7 +64,6 @@ public class FloatingElement {
      * The view that you want to float above
      */
     public View anchorView;
-
 
 
 }

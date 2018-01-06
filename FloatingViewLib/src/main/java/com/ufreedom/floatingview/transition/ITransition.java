@@ -23,29 +23,29 @@ package com.ufreedom.floatingview.transition;
  */
 
 public interface ITransition {
-    
-    public void setAlpha(float alpha);
-    
-    public void setRotation(float rotation);
-    
-    public void setRotationX(float rotationX);
 
-    public void setRotationY(float rotationY);
-    
-    public void setScaleX(float scaleX);
+    void setAlpha(float alpha);
 
-    public void setScaleY(float scaleY);
+    void setRotation(float rotation);
 
-    public void setScrollX(int scrollX);
+    void setRotationX(float rotationX);
 
-    public void setScrollY(int scrollY);
+    void setRotationY(float rotationY);
 
-    public void setTranslationX(float translationX);
-    
-    public void setTranslationY(float translationY);
+    void setScaleX(float scaleX);
 
-    public void setX(float x);
-    
-    public void setY(float y);
-    
+    void setScaleY(float scaleY);
+
+    void setScrollX(int scrollX);
+
+    void setScrollY(int scrollY);
+
+    void setTranslationX(float translationX);
+
+    void setTranslationY(float translationY);
+
+    void setX(float x);
+
+    void setY(float y);
+
 }

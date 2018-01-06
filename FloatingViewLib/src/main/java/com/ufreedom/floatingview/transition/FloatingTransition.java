@@ -24,5 +24,5 @@ package com.ufreedom.floatingview.transition;
  */
 
 public interface FloatingTransition {
-    public void applyFloating(YumFloating yumFloating);
+    void applyFloating(YumFloating yumFloating);
 }

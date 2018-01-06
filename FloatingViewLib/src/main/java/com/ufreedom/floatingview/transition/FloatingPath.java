@@ -22,7 +22,6 @@ import android.graphics.PathMeasure;
 
 /**
  * Author UFreedom
- * 
  */
 public class FloatingPath {
 
@@ -32,7 +31,7 @@ public class FloatingPath {
     protected FloatingPath() {
         this.mPath = new Path();
     }
-   
+
     protected FloatingPath(Path path) {
         this.mPath = path;
     }

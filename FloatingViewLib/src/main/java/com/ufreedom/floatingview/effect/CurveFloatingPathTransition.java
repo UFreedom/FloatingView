@@ -23,12 +23,12 @@ import android.animation.ObjectAnimator;
 import android.animation.ValueAnimator;
 import android.graphics.Path;
 
-import com.ufreedom.floatingview.transition.YumFloating;
+import com.ufreedom.floatingview.spring.SimpleReboundListener;
+import com.ufreedom.floatingview.spring.SpringHelper;
 import com.ufreedom.floatingview.transition.BaseFloatingPathTransition;
 import com.ufreedom.floatingview.transition.FloatingPath;
 import com.ufreedom.floatingview.transition.PathPosition;
-import com.ufreedom.floatingview.spring.SpringHelper;
-import com.ufreedom.floatingview.spring.SimpleReboundListener;
+import com.ufreedom.floatingview.transition.YumFloating;
 
 /**
  * Author UFreedom
@@ -40,7 +40,7 @@ public class CurveFloatingPathTransition extends BaseFloatingPathTransition {
     private Path mPath;
 
     public CurveFloatingPathTransition() {
-        
+
     }
 
     public CurveFloatingPathTransition(Path path) {
@@ -49,7 +49,7 @@ public class CurveFloatingPathTransition extends BaseFloatingPathTransition {
 
     @Override
     public FloatingPath getFloatingPath() {
-        if (mPath == null){
+        if (mPath == null) {
             mPath = new Path();
             mPath.moveTo(0, 0);
             mPath.quadTo(-100, -200, 0, -300);
@@ -63,7 +63,7 @@ public class CurveFloatingPathTransition extends BaseFloatingPathTransition {
         ValueAnimator translateAnimator;
         ValueAnimator alphaAnimator;
 
-        
+
         translateAnimator = ObjectAnimator.ofFloat(getStartPathPosition(), getEndPathPosition());
         translateAnimator.addUpdateListener(new ValueAnimator.AnimatorUpdateListener() {
             @Override
@@ -94,20 +94,20 @@ public class CurveFloatingPathTransition extends BaseFloatingPathTransition {
                 yumFloating.setAlpha((Float) valueAnimator.getAnimatedValue());
             }
         });
-        
-        SpringHelper.createWithBouncinessAndSpeed(0.0f, 1.0f,11, 15)
-                .reboundListener(new SimpleReboundListener(){
+
+        SpringHelper.createWithBouncinessAndSpeed(0.0f, 1.0f, 11, 15)
+                .reboundListener(new SimpleReboundListener() {
                     @Override
                     public void onReboundUpdate(double currentValue) {
                         yumFloating.setScaleX((float) currentValue);
                         yumFloating.setScaleY((float) currentValue);
                     }
-                }).start(yumFloating);  
-        
+                }).start(yumFloating);
+
         translateAnimator.setDuration(3000);
         translateAnimator.setStartDelay(50);
         translateAnimator.start();
         alphaAnimator.start();
     }
-    
+
 }

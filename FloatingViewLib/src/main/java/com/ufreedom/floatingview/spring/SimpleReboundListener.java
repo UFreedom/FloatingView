@@ -22,11 +22,11 @@ package com.ufreedom.floatingview.spring;
  * Date : 2016 十月 20
  */
 
-public class SimpleReboundListener implements ReboundListener{
-    
+public class SimpleReboundListener implements ReboundListener {
+
     @Override
     public void onReboundUpdate(double currentValue) {
-        
+
     }
 
     @Override

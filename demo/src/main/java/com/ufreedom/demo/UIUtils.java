@@ -13,23 +13,24 @@ import android.view.WindowManager;
  */
 
 public class UIUtils {
-    
+
     public static int dip2px(Context context, float dp) {
         Resources r = context.getResources();
         float px = TypedValue.applyDimension(TypedValue.COMPLEX_UNIT_DIP, dp, r.getDisplayMetrics());
         return Math.round(px);
     }
 
-    public static int getScreenWidth(Context context){
+    public static int getScreenWidth(Context context) {
         DisplayMetrics dm = new DisplayMetrics();
-        WindowManager wm = (WindowManager)context.getSystemService(Context.WINDOW_SERVICE);
+        WindowManager wm = (WindowManager) context.getSystemService(Context.WINDOW_SERVICE);
         wm.getDefaultDisplay().getMetrics(dm);
         return dm.widthPixels;
-        
+
     }
-    public static int getScreenHeight(Context context){
+
+    public static int getScreenHeight(Context context) {
         DisplayMetrics dm = new DisplayMetrics();
-        WindowManager wm = (WindowManager)context.getSystemService(Context.WINDOW_SERVICE);
+        WindowManager wm = (WindowManager) context.getSystemService(Context.WINDOW_SERVICE);
         wm.getDefaultDisplay().getMetrics(dm);
         return dm.heightPixels;
     }

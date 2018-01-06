@@ -1,12 +1,12 @@
 <?xml version="1.0" encoding="utf-8"?>
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:tools="http://schemas.android.com/tools"
-    android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    android:background="@color/colorPrimary"
-    android:gravity="center_horizontal"
-    android:orientation="vertical"
-    tools:context=".MainActivity">
+                xmlns:tools="http://schemas.android.com/tools"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:background="@color/colorPrimary"
+                android:gravity="center_horizontal"
+                android:orientation="vertical"
+                tools:context=".MainActivity">
 
     <RelativeLayout
         android:id="@+id/toolbar"
@@ -17,14 +17,14 @@
         <View
             android:id="@+id/statusBar"
             android:layout_width="match_parent"
-            android:layout_height="@dimen/status_bar_height" />
+            android:layout_height="@dimen/status_bar_height"/>
 
         <ImageView
             android:layout_width="162dp"
             android:layout_height="32dp"
             android:layout_alignParentBottom="true"
             android:layout_centerHorizontal="true"
-            android:src="@drawable/floating_view_title" />
+            android:src="@drawable/floating_view_title"/>
 
     </RelativeLayout>
 
@@ -42,14 +42,14 @@
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:scaleType="fitXY"
-            android:src="@drawable/bg_item" />
+            android:src="@drawable/bg_item"/>
 
         <ImageView
             android:layout_width="139.7dp"
             android:layout_height="95dp"
             android:layout_centerHorizontal="true"
             android:layout_marginTop="20dp"
-            android:src="@drawable/bike" />
+            android:src="@drawable/bike"/>
 
         <LinearLayout
             android:layout_width="wrap_content"
@@ -63,14 +63,14 @@
                 android:id="@+id/icPaperAirPlane"
                 android:layout_width="@dimen/bottom_op_item_w"
                 android:layout_height="@dimen/bottom_op_item_h"
-                android:src="@drawable/paper_airplane" />
+                android:src="@drawable/paper_airplane"/>
 
             <ImageView
                 android:id="@+id/icCommandLine"
                 android:layout_width="@dimen/bottom_op_item_w"
                 android:layout_height="@dimen/bottom_op_item_h"
                 android:layout_marginLeft="51.7dp"
-                android:src="@drawable/command_line" />
+                android:src="@drawable/command_line"/>
 
 
             <ImageView
@@ -78,14 +78,14 @@
                 android:layout_width="@dimen/bottom_op_item_w"
                 android:layout_height="@dimen/bottom_op_item_h"
                 android:layout_marginLeft="51.7dp"
-                android:src="@drawable/like" />
+                android:src="@drawable/like"/>
 
             <ImageView
                 android:id="@+id/icStar"
                 android:layout_width="@dimen/bottom_op_item_w"
                 android:layout_height="@dimen/bottom_op_item_h"
                 android:layout_marginLeft="51.7dp"
-                android:src="@drawable/star" />
+                android:src="@drawable/star"/>
 
 
         </LinearLayout>
@@ -105,14 +105,14 @@
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:scaleType="fitXY"
-            android:src="@drawable/bg_item" />
+            android:src="@drawable/bg_item"/>
 
         <ImageView
             android:layout_width="139.7dp"
             android:layout_height="95dp"
             android:layout_centerHorizontal="true"
             android:layout_marginTop="20dp"
-            android:src="@drawable/clock" />
+            android:src="@drawable/clock"/>
 
         <LinearLayout
             android:layout_width="wrap_content"
@@ -126,14 +126,14 @@
                 android:id="@+id/icBeer"
                 android:layout_width="@dimen/bottom_op_item_w"
                 android:layout_height="@dimen/bottom_op_item_h"
-                android:src="@drawable/beer" />
+                android:src="@drawable/beer"/>
 
             <ImageView
                 android:id="@+id/icMilk"
                 android:layout_width="@dimen/bottom_op_item_w"
                 android:layout_height="@dimen/bottom_op_item_h"
                 android:layout_marginLeft="51.7dp"
-                android:src="@drawable/milk" />
+                android:src="@drawable/milk"/>
 
 
             <ImageView
@@ -141,14 +141,14 @@
                 android:layout_width="@dimen/bottom_op_item_w"
                 android:layout_height="@dimen/bottom_op_item_h"
                 android:layout_marginLeft="51.7dp"
-                android:src="@drawable/soda" />
+                android:src="@drawable/soda"/>
 
             <ImageView
                 android:id="@+id/icCream"
                 android:layout_width="@dimen/bottom_op_item_w"
                 android:layout_height="@dimen/bottom_op_item_h"
                 android:layout_marginLeft="51.7dp"
-                android:src="@drawable/ice_cream" />
+                android:src="@drawable/ice_cream"/>
 
 
         </LinearLayout>
@@ -163,6 +163,6 @@
         android:layout_marginBottom="34dp"
         android:src="@drawable/floating_plane"
         android:layout_alignParentBottom="true"
-        android:layout_centerHorizontal="true" />
+        android:layout_centerHorizontal="true"/>
 
 </RelativeLayout>

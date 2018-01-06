@@ -22,10 +22,10 @@ import android.animation.AnimatorListenerAdapter;
 import android.animation.ObjectAnimator;
 import android.animation.ValueAnimator;
 
-import com.ufreedom.floatingview.transition.YumFloating;
-import com.ufreedom.floatingview.transition.FloatingTransition;
 import com.ufreedom.floatingview.spring.SimpleReboundListener;
 import com.ufreedom.floatingview.spring.SpringHelper;
+import com.ufreedom.floatingview.transition.FloatingTransition;
+import com.ufreedom.floatingview.transition.YumFloating;
 
 
 /**
@@ -51,7 +51,7 @@ public class TranslateFloatingTransition implements FloatingTransition {
 
     @Override
     public void applyFloating(final YumFloating yumFloating) {
-        
+
         ValueAnimator translateAnimator = ObjectAnimator.ofFloat(0, mTranslateY);
         translateAnimator.setDuration(mDuration);
         translateAnimator.setStartDelay(50);
@@ -70,7 +70,7 @@ public class TranslateFloatingTransition implements FloatingTransition {
 
             }
         });
-        
+
         ValueAnimator alphaAnimator = ObjectAnimator.ofFloat(1.0f, 0.0f);
         alphaAnimator.setDuration(mDuration);
         alphaAnimator.addUpdateListener(new ValueAnimator.AnimatorUpdateListener() {
@@ -79,16 +79,16 @@ public class TranslateFloatingTransition implements FloatingTransition {
                 yumFloating.setAlpha((Float) valueAnimator.getAnimatedValue());
             }
         });
-        
-        SpringHelper.createWithBouncinessAndSpeed(0.0f, 1.0f,10, 15)
-                .reboundListener(new SimpleReboundListener(){
+
+        SpringHelper.createWithBouncinessAndSpeed(0.0f, 1.0f, 10, 15)
+                .reboundListener(new SimpleReboundListener() {
                     @Override
                     public void onReboundUpdate(double currentValue) {
                         yumFloating.setScaleX((float) currentValue);
                         yumFloating.setScaleY((float) currentValue);
                     }
                 }).start(yumFloating);
-        
+
         alphaAnimator.start();
         translateAnimator.start();
     }

@@ -22,8 +22,8 @@ package com.ufreedom.floatingview.transition;
  * Date : 2016 十月 19
  */
 
-public interface  FloatingPathTransition extends FloatingTransition {
+public interface FloatingPathTransition extends FloatingTransition {
 
-    public FloatingPath getFloatingPath();
-    
+    FloatingPath getFloatingPath();
+
 }

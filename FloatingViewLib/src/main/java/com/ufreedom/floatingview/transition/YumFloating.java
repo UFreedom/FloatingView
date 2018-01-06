@@ -37,7 +37,7 @@ public class YumFloating implements ITransition, Rebound {
 
     private SpringSystem mSpringSystem;
     private WeakReference<View> mTargetViewWeakReference;
-    
+
     public YumFloating(View targetView, SpringSystem springSystem) {
         mTargetViewWeakReference = new WeakReference<View>(targetView);
         this.mSpringSystem = springSystem;
@@ -56,7 +56,7 @@ public class YumFloating implements ITransition, Rebound {
     @Override
     public void setAlpha(float alpha) {
         View targetView;
-        if ((targetView = getTargetView()) != null){
+        if ((targetView = getTargetView()) != null) {
             targetView.setAlpha(alpha);
         }
     }
@@ -64,7 +64,7 @@ public class YumFloating implements ITransition, Rebound {
     @Override
     public void setRotation(float rotation) {
         View targetView;
-        if ((targetView = getTargetView()) != null){
+        if ((targetView = getTargetView()) != null) {
             targetView.setRotation(rotation);
         }
     }
@@ -72,7 +72,7 @@ public class YumFloating implements ITransition, Rebound {
     @Override
     public void setRotationX(float rotationX) {
         View targetView;
-        if ((targetView = getTargetView()) != null){
+        if ((targetView = getTargetView()) != null) {
             targetView.setRotationX(rotationX);
         }
     }
@@ -80,7 +80,7 @@ public class YumFloating implements ITransition, Rebound {
     @Override
     public void setRotationY(float rotationY) {
         View targetView;
-        if ((targetView = getTargetView()) != null){
+        if ((targetView = getTargetView()) != null) {
             targetView.setRotationY(rotationY);
         }
     }
@@ -88,7 +88,7 @@ public class YumFloating implements ITransition, Rebound {
     @Override
     public void setScaleX(float scaleX) {
         View targetView;
-        if ((targetView = getTargetView()) != null){
+        if ((targetView = getTargetView()) != null) {
             targetView.setScaleX(scaleX);
         }
     }
@@ -96,7 +96,7 @@ public class YumFloating implements ITransition, Rebound {
     @Override
     public void setScaleY(float scaleY) {
         View targetView;
-        if ((targetView = getTargetView()) != null){
+        if ((targetView = getTargetView()) != null) {
             targetView.setScaleY(scaleY);
         }
     }
@@ -104,7 +104,7 @@ public class YumFloating implements ITransition, Rebound {
     @Override
     public void setScrollX(int scrollX) {
         View targetView;
-        if ((targetView = getTargetView()) != null){
+        if ((targetView = getTargetView()) != null) {
             targetView.setScaleX(scrollX);
         }
     }
@@ -112,16 +112,16 @@ public class YumFloating implements ITransition, Rebound {
     @Override
     public void setScrollY(int scrollY) {
         View targetView;
-        if ((targetView = getTargetView()) != null){
+        if ((targetView = getTargetView()) != null) {
             targetView.setScaleY(scrollY);
         }
-      
+
     }
 
     @Override
     public void setTranslationX(float translationX) {
         View targetView;
-        if ((targetView = getTargetView()) != null){
+        if ((targetView = getTargetView()) != null) {
             targetView.setTranslationX(translationX);
         }
     }
@@ -129,7 +129,7 @@ public class YumFloating implements ITransition, Rebound {
     @Override
     public void setTranslationY(float translationY) {
         View targetView;
-        if ((targetView = getTargetView()) != null){
+        if ((targetView = getTargetView()) != null) {
             targetView.setTranslationY(translationY);
         }
     }
@@ -137,7 +137,7 @@ public class YumFloating implements ITransition, Rebound {
     @Override
     public void setX(float x) {
         View targetView;
-        if ((targetView = getTargetView()) != null){
+        if ((targetView = getTargetView()) != null) {
             targetView.setX(x);
         }
     }
@@ -145,7 +145,7 @@ public class YumFloating implements ITransition, Rebound {
     @Override
     public void setY(float y) {
         View targetView;
-        if ((targetView = getTargetView()) != null){
+        if ((targetView = getTargetView()) != null) {
             targetView.setY(y);
         }
     }
@@ -167,18 +167,18 @@ public class YumFloating implements ITransition, Rebound {
     public float transition(double progress, float startValue, float endValue) {
         return (float) SpringUtil.mapValueFromRangeToRange(progress, 0, 1, startValue, endValue);
     }
-    
-    
-    public void clear(){
+
+
+    public void clear() {
         View view = getTargetView();
-        if (view != null){
-            ViewParent viewParent =  view.getParent();
-            if (viewParent instanceof ViewGroup){
+        if (view != null) {
+            ViewParent viewParent = view.getParent();
+            if (viewParent instanceof ViewGroup) {
                 ViewGroup parent = (ViewGroup) viewParent;
                 parent.removeView(view);
                 mTargetViewWeakReference.clear();
             }
         }
     }
-    
+
 }

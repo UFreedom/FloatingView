@@ -25,11 +25,11 @@ import com.facebook.rebound.Spring;
  */
 
 public interface Rebound {
-    
-    public Spring createSpringByBouncinessAndSpeed(double bounciness, double speed);
 
-    public Spring createSpringByTensionAndFriction(double tension, double friction) ;
+    Spring createSpringByBouncinessAndSpeed(double bounciness, double speed);
 
-    public float transition(double progress, float startValue, float endValue);
-    
+    Spring createSpringByTensionAndFriction(double tension, double friction);
+
+    float transition(double progress, float startValue, float endValue);
+
 }

@@ -20,10 +20,10 @@ package com.ufreedom.floatingview.effect;
 import android.animation.ObjectAnimator;
 import android.animation.ValueAnimator;
 
-import com.ufreedom.floatingview.transition.YumFloating;
-import com.ufreedom.floatingview.transition.FloatingTransition;
 import com.ufreedom.floatingview.spring.SimpleReboundListener;
 import com.ufreedom.floatingview.spring.SpringHelper;
+import com.ufreedom.floatingview.transition.FloatingTransition;
+import com.ufreedom.floatingview.transition.YumFloating;
 
 
 /**
@@ -57,7 +57,7 @@ public class ScaleFloatingTransition implements FloatingTransition {
 
     @Override
     public void applyFloating(final YumFloating yumFloating) {
-        
+
         ValueAnimator alphaAnimator = ObjectAnimator.ofFloat(1.0f, 0.0f);
         alphaAnimator.setDuration(mDuration);
         alphaAnimator.addUpdateListener(new ValueAnimator.AnimatorUpdateListener() {
@@ -69,7 +69,7 @@ public class ScaleFloatingTransition implements FloatingTransition {
         alphaAnimator.start();
 
         SpringHelper.createWithBouncinessAndSpeed(0.0f, 1.0f, mBounciness, mSpeed)
-                .reboundListener(new SimpleReboundListener(){
+                .reboundListener(new SimpleReboundListener() {
                     @Override
                     public void onReboundUpdate(double currentValue) {
                         yumFloating.setScaleX((float) currentValue);
@@ -77,5 +77,5 @@ public class ScaleFloatingTransition implements FloatingTransition {
                     }
                 }).start(yumFloating);
     }
-    
+
 }

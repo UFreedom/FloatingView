@@ -42,27 +42,27 @@ public class Floating {
 
     private FloatingDecorView mFloatingDecorView;
     private SpringSystem mSpringSystem;
-    
-    public Floating(Activity activity){
 
-        if (activity == null){
+    public Floating(Activity activity) {
+
+        if (activity == null) {
             throw new NullPointerException("Activity should not be null");
         }
-        
-        ViewGroup rootView = (ViewGroup) activity.findViewById(Window.ID_ANDROID_CONTENT);
+
+        ViewGroup rootView = activity.findViewById(Window.ID_ANDROID_CONTENT);
         View decorView = rootView.findViewById(R.id.floating_decor);
-        if (decorView instanceof  FloatingDecorView){
+        if (decorView instanceof FloatingDecorView) {
             mFloatingDecorView = (FloatingDecorView) decorView;
-        }else {
+        } else {
             mFloatingDecorView = new FloatingDecorView(activity);
             mFloatingDecorView.setId(R.id.floating_decor);
             rootView.addView(mFloatingDecorView);
         }
-        
-        if (mSpringSystem == null){
+
+        if (mSpringSystem == null) {
             mSpringSystem = SpringSystem.create();
         }
-        
+
     }
     
 
@@ -78,41 +78,40 @@ public class Floating {
     }*/
 
     public void startFloating(FloatingElement floatingElement) {
-        
+
         View anchorView = floatingElement.anchorView;
         View targetView = floatingElement.targetView;
-        
-        if (targetView == null){
-            targetView = LayoutInflater.from(anchorView.getContext()).inflate(floatingElement.targetViewLayoutResId,mFloatingDecorView,false);
+
+        if (targetView == null) {
+            targetView = LayoutInflater.from(anchorView.getContext()).inflate(floatingElement.targetViewLayoutResId, mFloatingDecorView, false);
         }
-        
+
         Rect rect = new Rect();
         anchorView.getGlobalVisibleRect(rect);
         int[] location = new int[2];
         mFloatingDecorView.getLocationOnScreen(location);
         rect.offset(-location[0], -location[1]);
-        
+
         int widthMeasureSpec = View.MeasureSpec.makeMeasureSpec((1 << 30) - 1, View.MeasureSpec.AT_MOST);
         int heightMeasureSpec = View.MeasureSpec.makeMeasureSpec((1 << 30) - 1, View.MeasureSpec.AT_MOST);
-        targetView.measure(widthMeasureSpec,heightMeasureSpec);
-        
-        int topMargin = rect.top  + ((anchorView.getMeasuredHeight() - targetView.getMeasuredHeight()) / 2) + floatingElement.offsetY;
-        int leftMargin = rect.left  + ((anchorView.getMeasuredWidth() - targetView.getMeasuredWidth()) / 2) + floatingElement.offsetX;
+        targetView.measure(widthMeasureSpec, heightMeasureSpec);
+
+        int topMargin = rect.top + ((anchorView.getMeasuredHeight() - targetView.getMeasuredHeight()) / 2) + floatingElement.offsetY;
+        int leftMargin = rect.left + ((anchorView.getMeasuredWidth() - targetView.getMeasuredWidth()) / 2) + floatingElement.offsetX;
 
         FrameLayout.LayoutParams lp = new FrameLayout.LayoutParams(ViewGroup.LayoutParams.WRAP_CONTENT, ViewGroup.LayoutParams.WRAP_CONTENT);
         lp.topMargin = topMargin;
         lp.leftMargin = leftMargin;
-        mFloatingDecorView.addView(targetView,lp);
-        
+        mFloatingDecorView.addView(targetView, lp);
+
         FloatingTransition floatingAnimator = floatingElement.floatingTransition;
         floatingAnimator.applyFloating(new YumFloating(targetView, mSpringSystem));
-        
+
     }
-    
-    
-    
-    private class FloatingDecorView extends FrameLayout{
-        
+
+
+    private class FloatingDecorView extends FrameLayout {
+
         public FloatingDecorView(Context context) {
             this(context, null);
         }
@@ -123,8 +122,8 @@ public class Floating {
 
         public FloatingDecorView(Context context, AttributeSet attrs, int defStyle) {
             super(context, attrs, defStyle);
-            
+
         }
     }
-    
+
 }

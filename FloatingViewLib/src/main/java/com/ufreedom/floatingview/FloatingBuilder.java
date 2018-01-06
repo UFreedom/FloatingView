@@ -25,43 +25,42 @@ import com.ufreedom.floatingview.transition.FloatingTransition;
 
 
 /**
- * 
  * Helped class for building {@link FloatingElement}
- * 
+ * <p>
  * Author UFreedom
  * Date : 2016 十月 19
  */
 public class FloatingBuilder {
-    
+
     private FloatingElement mFloatingElement;
 
     public FloatingBuilder() {
         mFloatingElement = new FloatingElement();
         mFloatingElement.targetViewLayoutResId = -1;
     }
-    
+
     public FloatingBuilder offsetX(int offsetX) {
         mFloatingElement.offsetX = offsetX;
         return this;
     }
-    
+
     public FloatingBuilder offsetY(int offsetY) {
         mFloatingElement.offsetY = offsetY;
         return this;
     }
-  
+
 
     public FloatingBuilder floatingTransition(FloatingTransition floatingTransition) {
         mFloatingElement.floatingTransition = floatingTransition;
-        return  this;
+        return this;
     }
-    
-    
-    public FloatingBuilder anchorView(View view){
+
+
+    public FloatingBuilder anchorView(View view) {
         mFloatingElement.anchorView = view;
         return this;
     }
-    
+
     public FloatingBuilder targetView(View view) {
         mFloatingElement.targetView = view;
         return this;
@@ -70,15 +69,15 @@ public class FloatingBuilder {
     public FloatingBuilder targetView(@LayoutRes int layResId) {
         mFloatingElement.targetViewLayoutResId = layResId;
         return this;
-    } 
+    }
 
     public FloatingElement build() {
 
         if (mFloatingElement.targetView == null && mFloatingElement.targetViewLayoutResId == -1) {
             throw new NullPointerException("TargetView should not be null");
         }
-        
-        if (mFloatingElement.anchorView == null){
+
+        if (mFloatingElement.anchorView == null) {
             throw new NullPointerException("AnchorView should not be null");
         }
 
